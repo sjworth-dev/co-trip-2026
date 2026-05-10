@@ -1,0 +1,1436 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#1F1A14">
+<title>Colorado Road Trip · May 25 – Jun 8, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+:root {
+  /* Sandstone & San Juan rust palette — late-spring Colorado */
+  --bg: #EFE6CF;          /* sandstone / dried-grass cream — slightly deeper for card contrast */
+  --bg-elev: #FFFFFF;     /* pure white card */
+  --bg-soft: #E2D6B6;     /* deeper sandstone */
+  --ink: #221813;         /* warm near-black, like wet basalt */
+  --ink-soft: #4F4032;    /* warm dark brown */
+  --ink-muted: #8A7960;   /* muted oak */
+  --line: #BFAE82;        /* dusty contour line — visible against both bg and card */
+  --line-soft: #D6C9A2;
+  --terracotta: #A8463A;  /* Red Mountain Pass iron-oxide rust */
+  --terracotta-soft: #ECD2C8;
+  --forest: #38563A;      /* alpine spruce */
+  --forest-soft: #C9D6C2;
+  --gold: #B5882D;        /* cottonwood-leaf gold */
+  --gold-soft: #ECDFB6;
+  --sky: #547D96;         /* CO bluebird sky */
+  --sky-soft: #CAD8DD;
+  --sage: #8B9A7A;        /* high-desert sage */
+  --sage-soft: #DDE3D3;
+  --shadow-sm: 0 1px 2px rgba(34,24,19,.05);
+  --shadow: 0 1px 2px rgba(34,24,19,.05), 0 4px 16px rgba(34,24,19,.08);
+  --shadow-lg: 0 4px 8px rgba(34,24,19,.07), 0 16px 40px rgba(34,24,19,.12);
+  --radius: 4px;
+  --radius-lg: 8px;
+}
+
+[data-theme="dark"] {
+  /* Night in mining country */
+  --bg: #14100C;
+  --bg-elev: #1E1812;
+  --bg-soft: #2B2216;
+  --ink: #F4EDDC;
+  --ink-soft: #D7CBAE;
+  --ink-muted: #8C7A60;
+  --line: #2F2618;
+  --line-soft: #2A2114;
+  --terracotta: #C66952;
+  --terracotta-soft: #3D2218;
+  --forest: #7B9879;
+  --forest-soft: #1E2A1D;
+  --gold: #D4A946;
+  --gold-soft: #2E2516;
+  --sky: #7CA0B5;
+  --sky-soft: #1A262C;
+  --sage: #97A88A;
+  --sage-soft: #1F2A1D;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.4);
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 4px 16px rgba(0,0,0,.4);
+  --shadow-lg: 0 4px 8px rgba(0,0,0,.5), 0 16px 40px rgba(0,0,0,.5);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background .3s ease, color .3s ease;
+}
+
+h1, h2, h3, h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; line-height: 1.1; letter-spacing: -0.02em; margin: 0; }
+h1 { font-size: clamp(3rem, 7vw, 6rem); font-weight: 400; }
+h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: .25em; }
+h3 { font-size: 1.5rem; margin-bottom: .5em; }
+h4 { font-size: .8rem; font-weight: 600; font-family: 'Inter', sans-serif; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted); margin: 1.75em 0 .75em; }
+p { margin: 0 0 1em; }
+a { color: var(--terracotta); text-decoration: none; border-bottom: 1px solid currentColor; transition: color .15s; }
+a:hover { color: var(--ink); }
+ul { margin: 0 0 1em; padding-left: 1.2em; }
+li { margin: .35em 0; }
+strong { font-weight: 600; }
+em { font-style: italic; color: var(--ink-soft); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
+.mono { font-family: 'JetBrains Mono', monospace; font-size: .85em; }
+
+/* HERO */
+.hero {
+  position: relative;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 6rem 1.5rem 5rem;
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(184,130,28,.18), transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(176,65,31,.18), transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+.topo {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+.topo-lines { stroke: rgba(250,246,238,.04); stroke-width: 1; fill: none; }
+.mountains-back { fill: rgba(250,246,238,.05); }
+.mountains-mid  { fill: rgba(250,246,238,.08); }
+.mountains-front{ fill: rgba(250,246,238,.12); }
+.hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+.hero .eyebrow { font-size: .8rem; letter-spacing: .25em; text-transform: uppercase; color: rgba(250,246,238,.55); margin-bottom: 2rem; font-weight: 500; }
+.hero h1 { color: var(--bg); margin: 0 0 1rem; }
+.hero .sub { font-family: 'Fraunces', serif; font-size: clamp(1.15rem, 2vw, 1.5rem); font-style: italic; color: rgba(250,246,238,.78); max-width: 38ch; margin-bottom: 4rem; line-height: 1.4; }
+.hero-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 2rem 2.5rem; max-width: 800px; }
+.route-ribbon {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .68rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: rgba(244,237,220,.5);
+  margin: 2.5rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem .9rem;
+  align-items: center;
+  max-width: 860px;
+}
+.route-ribbon .stop { color: rgba(244,237,220,.85); position: relative; padding-right: .9rem; }
+.route-ribbon .stop:not(:last-child)::after { content: '·'; position: absolute; right: 0; color: rgba(244,237,220,.35); }
+.route-ribbon .stop:last-child { padding-right: 0; }
+.route-coord { color: rgba(244,237,220,.4); font-family: 'JetBrains Mono', monospace; font-size: .68rem; letter-spacing: .15em; margin-top: 1rem; }
+.hero-meta div span { display: block; font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(250,246,238,.5); margin-bottom: .35rem; font-weight: 500; }
+.hero-meta div { font-size: .9rem; color: rgba(250,246,238,.85); }
+.theme-toggle {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(250,246,238,.1); border: 1px solid rgba(250,246,238,.2);
+  color: var(--bg); cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  z-index: 10;
+  transition: background .15s, transform .15s;
+}
+.theme-toggle:hover { background: rgba(250,246,238,.2); transform: scale(1.05); }
+
+/* TODAY BANNER */
+.today-banner {
+  max-width: 1200px;
+  margin: -2rem auto 3rem;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 5;
+}
+.today-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-lg);
+  display: flex; align-items: center; gap: 1rem;
+  box-shadow: var(--shadow-lg);
+}
+.today-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--terracotta); position: relative; flex-shrink: 0; }
+.today-dot::after { content:''; position:absolute; inset:-6px; border-radius:50%; background:var(--terracotta); opacity:.3; animation: pulse 2s ease-out infinite; }
+@keyframes pulse { 0% {transform:scale(1);opacity:.3} 100% {transform:scale(2.2);opacity:0} }
+.today-content { flex: 1; }
+.today-label { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: .25rem; }
+.today-base { font-family: 'Fraunces', serif; font-size: 1.25rem; line-height: 1.2; }
+.today-action { font-size: .85rem; color: var(--terracotta); font-weight: 500; border: 0; }
+
+/* STATS */
+.stats {
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.stat { background: var(--bg-elev); padding: 1.5rem 1.75rem; }
+.stat .num { font-family: 'Fraunces', serif; font-size: 2.5rem; line-height: 1; color: var(--terracotta); font-weight: 400; }
+.stat .label { font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: var(--ink-muted); margin-top: .5rem; font-weight: 500; }
+
+/* VIEW TABS */
+.views { max-width: 1200px; margin: 0 auto 1.25rem; padding: 0 1.5rem; }
+.tabs {
+  display: inline-flex; gap: 4px;
+  background: var(--bg-soft);
+  padding: 4px; border-radius: 100px;
+}
+.tab {
+  background: transparent; border: 0;
+  padding: .55rem 1.1rem;
+  border-radius: 100px;
+  font-family: 'Inter', sans-serif;
+  font-size: .82rem; font-weight: 500;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: background .15s, color .15s;
+  letter-spacing: .02em;
+}
+.tab:hover { color: var(--ink); }
+.tab.active { background: var(--bg-elev); color: var(--ink); box-shadow: var(--shadow-sm); }
+
+/* VIEW PANELS */
+.view { max-width: 1200px; margin: 0 auto 4rem; padding: 0 1.5rem; }
+.view-panel { display: none; }
+.view-panel.active { display: block; }
+
+/* MAP */
+.map-wrap { background: var(--bg-elev); padding: 1rem; border-radius: var(--radius-lg); box-shadow: var(--shadow); border: 1px solid var(--line); }
+#map { height: 540px; width: 100%; border-radius: var(--radius); background: var(--bg-soft); }
+
+/* CALENDAR */
+.calendar {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; background: var(--line); }
+.cal-day {
+  background: var(--bg-elev);
+  padding: .85rem .9rem;
+  min-height: 110px;
+  display: flex; flex-direction: column;
+  cursor: pointer;
+  transition: background .15s;
+  border: 0;
+  font-family: inherit;
+  text-align: left;
+  color: inherit;
+  position: relative;
+}
+.cal-day:hover { background: var(--bg-soft); }
+.cal-day.is-today { background: var(--terracotta-soft); }
+.cal-day.is-today::before { content: ''; position: absolute; top: .85rem; right: .9rem; width: 8px; height: 8px; border-radius: 50%; background: var(--terracotta); }
+.cal-date { font-family: 'Fraunces', serif; font-size: 1.15rem; line-height: 1; margin-bottom: .15rem; }
+.cal-dow { font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: .55rem; font-weight: 600; }
+.cal-base { font-size: .82rem; font-weight: 600; color: var(--ink); margin-bottom: .15rem; line-height: 1.2; }
+.cal-act { font-size: .72rem; color: var(--ink-muted); line-height: 1.3; flex: 1; }
+.cal-elev { font-family: 'JetBrains Mono', monospace; font-size: .65rem; color: var(--ink-muted); margin-top: .35rem; }
+.cal-day.travel-day { border-left: 3px solid var(--gold); }
+
+/* ELEVATION CHART */
+.elev-wrap {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+.elev-wrap h3 { margin-bottom: .25rem; }
+.elev-wrap .elev-sub { color: var(--ink-muted); font-size: .9rem; margin-bottom: 1.5rem; }
+.elev-svg { width: 100%; height: 360px; }
+.elev-axis { stroke: var(--line); stroke-width: 1; }
+.elev-axis-label { fill: var(--ink-muted); font-size: 11px; font-family: 'JetBrains Mono', monospace; }
+.elev-line { stroke: var(--terracotta); stroke-width: 2.5; fill: none; }
+.elev-area { fill: var(--terracotta); opacity: 0.08; }
+.elev-watch { stroke: var(--gold); stroke-width: 1; stroke-dasharray: 4,4; fill: none; }
+.elev-watch-label { fill: var(--gold); font-size: 11px; font-weight: 600; }
+.elev-dot { fill: var(--terracotta); stroke: var(--bg-elev); stroke-width: 2; }
+.elev-day-label { fill: var(--ink); font-family: 'Fraunces', serif; font-size: 11px; font-weight: 500; }
+.elev-elev-label { fill: var(--ink-muted); font-family: 'JetBrains Mono', monospace; font-size: 10px; }
+.elev-zone-fill { fill: var(--gold); opacity: 0.04; }
+.elev-zone-label { fill: var(--ink-muted); font-size: 10px; font-style: italic; }
+
+/* TRIP STRIP */
+.strip { max-width: 1200px; margin: 0 auto 4rem; padding: 0 1.5rem; }
+.strip h4 { margin-top: 0; margin-bottom: 1rem; }
+.strip-inner { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 1000px) { .strip-inner { display: flex; overflow-x: auto; gap: 12px; padding-bottom: 1rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; } .strip-card { min-width: 200px; scroll-snap-align: start; } }
+.strip-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem .9rem;
+  text-align: left;
+  transition: transform .15s, border-color .15s, box-shadow .15s;
+}
+.strip-card:hover { border-color: var(--terracotta); transform: translateY(-2px); box-shadow: var(--shadow); }
+.strip-card a { color: inherit; text-decoration: none; border: 0; display: block; }
+.strip-card .num { font-family: 'JetBrains Mono', monospace; font-size: .7rem; color: var(--terracotta); letter-spacing: .1em; }
+.strip-card .name { font-family: 'Fraunces', serif; font-size: 1.15rem; line-height: 1.2; margin: .35rem 0; font-weight: 500; }
+.strip-card .meta { font-size: .72rem; color: var(--ink-muted); }
+.strip-card .nights { font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-top: .4rem; font-weight: 600; }
+
+/* STICKY NAV */
+nav.sticky {
+  position: sticky; top: 0;
+  background: rgba(250, 246, 238, .92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  z-index: 50;
+  padding: .75rem 0;
+  transition: background .3s;
+}
+[data-theme="dark"] nav.sticky { background: rgba(20, 17, 14, .92); }
+nav.sticky .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; gap: 1.25rem; overflow-x: auto; font-size: .78rem; -webkit-overflow-scrolling: touch; }
+nav.sticky a { color: var(--ink-muted); text-decoration: none; border: 0; white-space: nowrap; padding: .25rem 0; letter-spacing: .03em; font-weight: 500; }
+nav.sticky a:hover { color: var(--terracotta); }
+
+/* CONTAINER */
+.container { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* JONAH */
+.lede { font-family: 'Fraunces', serif; font-size: 1.15rem; font-style: italic; color: var(--ink-muted); margin: -.25rem 0 2rem; line-height: 1.4; }
+.jonah-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin: 1.5rem 0 2.5rem; }
+.jonah-card { background: var(--bg-elev); border: 1px solid var(--line); padding: 1.5rem 1.5rem 1.25rem; border-radius: var(--radius-lg); position: relative; transition: border-color .15s, transform .15s; }
+.jonah-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+.jonah-card.priority { border-color: var(--terracotta); background: linear-gradient(160deg, var(--terracotta-soft) 0%, var(--bg-elev) 60%); }
+.jonah-num { font-family: 'JetBrains Mono', monospace; font-size: .68rem; color: var(--gold); letter-spacing: .15em; margin-bottom: .5rem; font-weight: 600; }
+.jonah-card.priority .jonah-num { color: var(--terracotta); }
+.jonah-card h4 { color: var(--ink); font-size: 1.05rem; font-family: 'Fraunces', serif; font-weight: 500; text-transform: none; letter-spacing: -0.01em; margin: 0 0 .5rem; }
+.jonah-card p { font-size: .92rem; line-height: 1.5; margin: 0 0 .5rem; }
+.jonah-card p:last-child { margin-bottom: 0; }
+.jonah-card .small-muted { color: var(--ink-muted); font-size: .82rem; }
+.jonah-checklist-pre { margin-top: 1rem; padding: 1.25rem 1.5rem; background: var(--bg-soft); border-radius: var(--radius); }
+.jonah-checklist-pre h4 { margin-top: 0; }
+.jonah-checklist-pre ul { margin-bottom: 0; }
+
+/* DEAR JONAH (memento section) */
+#for-jonah {
+  padding: 6rem 1.5rem 5rem;
+  margin-top: 4rem;
+  background: linear-gradient(180deg, transparent 0%, var(--sage-soft) 30%, var(--sage-soft) 70%, transparent 100%);
+  position: relative;
+}
+.dear-jonah { max-width: 580px; margin: 0 auto; text-align: center; }
+.dear-jonah .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: .68rem; letter-spacing: .25em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 1rem; }
+.dear-jonah h2 { font-family: 'Fraunces', serif; font-size: clamp(2.75rem, 6vw, 4.25rem); font-weight: 400; font-style: italic; line-height: 1; margin: 0 0 1rem; color: var(--ink); }
+.dear-jonah-meta { font-family: 'JetBrains Mono', monospace; font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 3rem; }
+.dear-letter { font-family: 'Fraunces', serif; font-size: 1.15rem; line-height: 1.7; color: var(--ink-soft); text-align: left; margin: 0 auto 2rem; max-width: 480px; }
+.dear-letter p { margin: 0 0 1.25em; }
+.dear-letter p.opening { font-size: 1.4rem; color: var(--ink); font-style: italic; }
+.dear-stats { list-style: none; padding: 0; margin: 2.5rem auto; max-width: 480px; text-align: left; }
+.dear-stats li { display: flex; justify-content: space-between; gap: 1rem; padding: .85rem 0; border-bottom: 1px dashed var(--line); font-size: .9rem; }
+.dear-stats li:last-child { border-bottom: 0; }
+.dear-key { color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; flex-shrink: 0; }
+.dear-val { color: var(--ink); font-weight: 500; text-align: right; font-family: 'Fraunces', serif; font-size: 1rem; }
+.dear-photos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 480px; margin: 2.5rem auto 0; }
+.photo-slot { aspect-ratio: 4/5; border: 1px dashed var(--line); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: var(--ink-muted); font-family: 'Fraunces', serif; font-style: italic; font-size: .85rem; padding: .5rem; text-align: center; background: var(--bg-elev); }
+.dear-sign { font-family: 'Fraunces', serif; font-style: italic; color: var(--ink-soft); margin-top: 2rem; font-size: 1.1rem; }
+.dear-sign-meta { font-family: 'JetBrains Mono', monospace; font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-muted); margin-top: .5rem; }
+
+/* CALLOUT */
+.callout {
+  background: var(--forest-soft);
+  border-left: 3px solid var(--forest);
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+  border-radius: var(--radius);
+}
+.callout.warn { background: var(--terracotta-soft); border-left-color: var(--terracotta); }
+.callout h4 { margin-top: 0; color: var(--forest); }
+.callout.warn h4 { color: var(--terracotta); }
+.callout ul { margin: .5rem 0 0; }
+
+/* TAGS */
+.tags { display: inline-flex; flex-wrap: wrap; gap: 6px; margin-bottom: .75rem; }
+.tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .03em;
+  background: var(--bg-soft);
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+.tag-hike { background: var(--forest-soft); color: var(--forest); }
+.tag-bike { background: var(--gold-soft); color: var(--gold); }
+.tag-soak { background: var(--sky-soft); color: var(--sky); }
+.tag-eat { background: var(--terracotta-soft); color: var(--terracotta); }
+.tag-drive { background: var(--bg-soft); color: var(--ink-soft); }
+.tag-stay { background: var(--gold-soft); color: var(--gold); }
+
+/* BASE CARDS */
+.base {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  padding: 2.5rem;
+  margin: 0 0 1rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  position: relative;
+}
+.base.is-today { border-color: var(--terracotta); box-shadow: 0 0 0 3px var(--terracotta-soft), var(--shadow); }
+.base-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--line); }
+.base-header .title-block .num { font-family: 'JetBrains Mono', monospace; font-size: .72rem; color: var(--gold); margin-bottom: .35rem; letter-spacing: .12em; font-weight: 500; }
+.base-header h2 { margin: 0; }
+.base-header .meta-block { text-align: right; font-size: .85rem; color: var(--ink-muted); }
+.base-header .meta-block .dates { font-family: 'Fraunces', serif; font-size: 1.1rem; color: var(--ink); display: block; margin-bottom: .25rem; font-weight: 500; }
+.elev-pill {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--bg-soft);
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-size: .72rem;
+  letter-spacing: .03em;
+  color: var(--ink-soft);
+  font-family: 'JetBrains Mono', monospace;
+}
+.elev-pill.warn { background: var(--gold-soft); color: var(--gold); }
+.base-coord { font-family: 'JetBrains Mono', monospace; font-size: .65rem; letter-spacing: .14em; color: var(--ink-muted); margin-top: .5rem; text-transform: uppercase; }
+.day-block { margin-top: 1.5rem; }
+.day-block h4 { margin-top: 0; margin-bottom: .5rem; color: var(--terracotta); font-family: 'Fraunces', serif; font-size: 1.05rem; font-weight: 500; text-transform: none; letter-spacing: 0; }
+
+/* DRIVE */
+.drive {
+  display: flex; align-items: flex-start; gap: 1rem;
+  margin: 2rem auto;
+  padding: 1.25rem 1.5rem;
+  border-left: 2px solid var(--gold);
+  color: var(--ink-soft);
+  font-size: .92rem;
+  background: var(--bg-elev);
+  max-width: 760px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  box-shadow: var(--shadow-sm);
+}
+.drive .icon { font-family: 'Fraunces', serif; font-size: 1.75rem; color: var(--gold); line-height: 1; flex-shrink: 0; padding-top: 2px; }
+.drive strong { color: var(--ink); font-weight: 500; }
+
+/* CHECKLIST + PROGRESS */
+.progress { background: var(--line); height: 4px; border-radius: 100px; overflow: hidden; margin-bottom: 1.25rem; }
+.progress-bar { height: 100%; background: var(--terracotta); border-radius: 100px; transition: width .3s; }
+.progress-label { font-family: 'JetBrains Mono', monospace; font-size: .72rem; color: var(--ink-muted); display: flex; justify-content: space-between; margin-bottom: .35rem; }
+.checklist { list-style: none; padding: 0; margin: 0; }
+.checklist li { display: flex; align-items: flex-start; gap: .75rem; padding: .85rem 0; border-bottom: 1px solid var(--line); margin: 0; }
+.checklist li:last-child { border-bottom: 0; }
+.checklist input[type="checkbox"] { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--terracotta); flex-shrink: 0; cursor: pointer; }
+.checklist label { cursor: pointer; flex: 1; }
+.checklist input:checked + label { text-decoration: line-through; color: var(--ink-muted); }
+.checklist .priority { display: inline-block; width: 22px; font-family: 'JetBrains Mono', monospace; color: var(--terracotta); font-weight: 600; font-size: .85em; }
+
+/* SECTIONS */
+section { padding: 0 0 4rem; }
+section.alt-bg { background: var(--bg-soft); padding: 4rem 0; margin: 4rem 0; }
+
+/* FADE-IN ON SCROLL */
+.reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease-out, transform .6s ease-out; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* FOOTER */
+footer { padding: 3rem 1.5rem 5rem; text-align: center; color: var(--ink-muted); font-size: .85rem; border-top: 1px solid var(--line); }
+footer a { color: var(--ink-muted); }
+.foot-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; flex-wrap: wrap; }
+.foot-links button, .foot-links a { background: transparent; border: 1px solid var(--line); padding: .4rem .9rem; border-radius: 100px; color: var(--ink-muted); cursor: pointer; font-family: inherit; font-size: .8rem; transition: all .15s; text-decoration: none; }
+.foot-links button:hover, .foot-links a:hover { border-color: var(--terracotta); color: var(--terracotta); }
+
+@media print {
+  .hero { padding: 2rem 1.5rem; background: white !important; color: black !important; }
+  .hero h1, .hero .sub { color: black !important; }
+  nav.sticky, .views, .map-wrap, .strip, .theme-toggle, .foot-links, .today-banner, .topo { display: none !important; }
+  .view-panel { display: none !important; }
+  .base { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
+  body { background: white !important; color: black !important; }
+}
+
+@media (max-width: 700px) {
+  .hero { padding: 4rem 1.25rem 3rem; }
+  .base { padding: 1.5rem; }
+  .base-header { flex-direction: column; align-items: flex-start; }
+  .base-header .meta-block { text-align: left; }
+  #map { height: 380px; }
+  .cal-grid { grid-template-columns: repeat(2, 1fr); }
+  .cal-day { min-height: 90px; }
+  .elev-svg { height: 280px; }
+}
+
+/* LEAFLET MARKER OVERRIDE */
+.leaflet-marker-pane .marker-base {
+  background: var(--terracotta);
+  color: #fff;
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif; font-weight: 600; font-size: 14px;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.35);
+}
+.leaflet-popup-content-wrapper { border-radius: var(--radius); }
+.leaflet-popup-content { font-family: 'Inter', sans-serif; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☾</button>
+  <svg class="topo" preserveAspectRatio="xMidYMax slice" viewBox="0 0 1200 600">
+    <!-- topo contour lines -->
+    <g class="topo-lines">
+      <path d="M 0 480 Q 200 460 400 470 T 800 460 T 1200 470" />
+      <path d="M 0 510 Q 200 490 400 500 T 800 490 T 1200 500" />
+      <path d="M 0 540 Q 200 520 400 530 T 800 520 T 1200 530" />
+      <path d="M 0 570 Q 200 550 400 560 T 800 550 T 1200 560" />
+    </g>
+    <!-- back mountain layer -->
+    <path class="mountains-back" d="M0,420 L80,340 L150,380 L240,260 L330,330 L420,220 L510,300 L600,200 L690,290 L780,180 L870,260 L960,200 L1050,290 L1140,250 L1200,310 L1200,600 L0,600 Z" />
+    <!-- mid mountain layer -->
+    <path class="mountains-mid" d="M0,460 L100,380 L180,420 L280,320 L380,400 L480,300 L580,380 L680,290 L780,360 L880,280 L980,360 L1080,310 L1200,380 L1200,600 L0,600 Z" />
+    <!-- front mountain layer -->
+    <path class="mountains-front" d="M0,520 L120,440 L220,490 L340,400 L460,470 L580,400 L700,460 L820,400 L940,470 L1060,420 L1200,470 L1200,600 L0,600 Z" />
+  </svg>
+  <div class="hero-inner">
+    <div class="eyebrow">May 25 – June 8, 2026 · 14 nights · 7 bases</div>
+    <h1>Colorado.</h1>
+    <p class="sub">San Juans, hot springs, and Mt. Sopris from a baby seat. Sam, Gigi, and Jonah's three-month-old debut as a road-trip family.</p>
+    <div class="hero-meta">
+      <div><span>Fly in</span>May 25 · DEN</div>
+      <div><span>Fly out</span>Jun 8 · DEN → MSY</div>
+      <div><span>Locked</span>Broadmoor (May 25–26)</div>
+    </div>
+    <div class="route-ribbon">
+      <span class="stop">Springs</span>
+      <span class="stop">Salida</span>
+      <span class="stop">Pagosa</span>
+      <span class="stop">Durango</span>
+      <span class="stop">Ridgway</span>
+      <span class="stop">Redstone</span>
+      <span class="stop">Carbondale</span>
+    </div>
+    <div class="route-coord">37.27°N – 39.86°N  ·  104.67°W – 108.49°W  ·  Five passes  ·  ~870 mi</div>
+  </div>
+</header>
+
+<!-- TODAY INDICATOR -->
+<div class="today-banner reveal" id="todayBanner" style="display: none">
+  <div class="today-card">
+    <div class="today-dot"></div>
+    <div class="today-content">
+      <div class="today-label" id="todayLabel">Today</div>
+      <div class="today-base" id="todayBase">—</div>
+    </div>
+    <a class="today-action" id="todayAction" href="#">Jump →</a>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats reveal">
+  <div class="stat"><div class="num">14</div><div class="label">Nights</div></div>
+  <div class="stat"><div class="num">7</div><div class="label">Bases</div></div>
+  <div class="stat"><div class="num">~870</div><div class="label">Miles</div></div>
+  <div class="stat"><div class="num">~17h</div><div class="label">Driving</div></div>
+</div>
+
+<!-- VIEW TABS -->
+<div class="views">
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-view="map">Map</button>
+    <button class="tab" data-view="calendar">Calendar</button>
+    <button class="tab" data-view="elevation">Elevation</button>
+  </div>
+</div>
+
+<!-- VIEWS -->
+<div class="view">
+  <div class="view-panel active" data-panel="map">
+    <div class="map-wrap"><div id="map"></div></div>
+  </div>
+
+  <div class="view-panel" data-panel="calendar">
+    <div class="calendar">
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+  </div>
+
+  <div class="view-panel" data-panel="elevation">
+    <div class="elev-wrap">
+      <h3>Elevation profile</h3>
+      <p class="elev-sub">Where each base sits relative to Jonah's 8,000 ft sleep watch line. All bases stay below; high day-trips are noted.</p>
+      <svg class="elev-svg" viewBox="0 0 800 360" id="elevSvg"></svg>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY NAV -->
+<nav class="sticky">
+  <div class="nav-inner">
+    <a href="#jonah">Jonah</a>
+    <a href="#b1">1 · Springs</a>
+    <a href="#b2">2 · Salida</a>
+    <a href="#b3">3 · Pagosa</a>
+    <a href="#b4">4 · Durango</a>
+    <a href="#b5">5 · Ridgway</a>
+    <a href="#b6">6 · Redstone</a>
+    <a href="#b7">7 · Carbondale</a>
+    <a href="#book">Reservations</a>
+    <a href="#pack">Pack list</a>
+  </div>
+</nav>
+
+<!-- TRIP STRIP -->
+<div class="strip reveal">
+  <h4>The bases</h4>
+  <div class="strip-inner" id="stripInner"></div>
+</div>
+
+<!-- JONAH RULES -->
+<section id="jonah" class="reveal">
+  <div class="container">
+    <h2>Traveling with Jonah</h2>
+    <p class="lede">Three months old. First trip. Mountain country. The rules — for us.</p>
+
+    <div class="jonah-grid">
+      <div class="jonah-card priority">
+        <div class="jonah-num">RULE 01</div>
+        <h4>Altitude — sleep below 8,000 ft</h4>
+        <p>All seven bases pass. Day-trips up high are fine; come down to sleep.</p>
+        <p class="small-muted">Day-trip-only towns: Telluride (8,750), Mountain Village (9,500), Silverton (9,300), Pikes Peak summit, Independence Pass summit.</p>
+      </div>
+      <div class="jonah-card priority">
+        <div class="jonah-num">RULE 02</div>
+        <h4>Watch for warning signs</h4>
+        <p>Fussiness, poor feeding, fast or labored breathing, bluish lips.</p>
+        <p class="small-muted">Come down 1,000+ ft fast if any appear. Bailout to a lower base is always an option.</p>
+      </div>
+      <div class="jonah-card">
+        <div class="jonah-num">RULE 03</div>
+        <h4>Carrier for trails, stroller for paths</h4>
+        <p>Ergo / Tula carrier for any real trail. All-terrain stroller for Garden of the Gods, Animas River Trail, Riverwalks.</p>
+      </div>
+      <div class="jonah-card">
+        <div class="jonah-num">RULE 04</div>
+        <h4>Hot springs — cooler pools only</h4>
+        <p>Family pools at Mt. Princeton, Ouray, and Pagosa work. Skip the hottest terraces.</p>
+        <p class="small-muted">Confirm policies per property — most have age minimums for the hot pools.</p>
+      </div>
+      <div class="jonah-card">
+        <div class="jonah-num">RULE 05</div>
+        <h4>Drive in 2–3h chunks</h4>
+        <p>Real stop every ~90 min for feed/diaper. White noise + portable fan in the car. Sun shade on the rear window.</p>
+      </div>
+      <div class="jonah-card">
+        <div class="jonah-num">RULE 06</div>
+        <h4>Layer for cold mornings</h4>
+        <p>Late-May high-country mornings drop into the 30s F. Sun midday: 70s. Long sleeves &amp; shade over sunscreen for under 6 mo.</p>
+      </div>
+      <div class="jonah-card">
+        <div class="jonah-num">RULE 07</div>
+        <h4>Pack-and-play at every base</h4>
+        <p>Verify with each Airbnb host before arrival. NOLA → Mountain Time is +1 hour — let his routine drift forward through the trip.</p>
+      </div>
+      <div class="jonah-card">
+        <div class="jonah-num">RULE 08</div>
+        <h4>Bailouts are pre-planned</h4>
+        <p>Hot springs not working? Skip and chill. Hike too steep? Turn around. The trip is built so any base can absorb a slow day.</p>
+      </div>
+    </div>
+
+    <div class="jonah-checklist-pre">
+      <h4>Pre-trip checklist</h4>
+      <ul>
+        <li>Pediatrician visit — confirm 3-month altitude clearance + general travel advice</li>
+        <li>Acetaminophen dosing notes for the diaper bag</li>
+        <li>DM each Airbnb host about pack-and-play availability</li>
+        <li>Source pulse oximeter (Owlet sock or finger clip) before departure</li>
+        <li>Print insurance card + pediatrician contact for the glove box</li>
+      </ul>
+    </div>
+
+    <p style="margin-top: 1.5rem; color: var(--ink-muted); font-size: .9rem">→ Jonah-specific gear is in the <a href="#pack">Pack list</a>. → A keepsake page <a href="for-jonah.html">just for Jonah</a> (printable). → A <a href="jonah-book.html">high-contrast picture book</a> for the road.</p>
+  </div>
+</section>
+
+<!-- BASE 1 -->
+<section id="b1" class="reveal">
+  <div class="container">
+    <article class="base" data-base="1">
+      <div class="base-header">
+        <div class="title-block">
+          <div class="num">BASE 01</div>
+          <h2>Colorado Springs</h2>
+        </div>
+        <div class="meta-block">
+          <span class="dates">Sun – Mon · May 25–26</span>
+          <span class="elev-pill">6,000 ft</span> · 2 nights
+          <div class="base-coord">38.78°N · 104.85°W</div>
+        </div>
+      </div>
+
+      <div class="tags">
+        <span class="tag tag-stay">Broadmoor (locked)</span>
+        <span class="tag tag-hike">Garden of the Gods</span>
+        <span class="tag tag-eat">Penrose Room</span>
+      </div>
+
+      <h4>Lodging</h4>
+      <p><strong>The Broadmoor</strong> — locked.</p>
+
+      <div class="day-block">
+        <h4>Day 1 · Mon May 26 — Falconry + chill</h4>
+        <ul>
+          <li><strong>Morning:</strong> Falconry class at the Broadmoor (their famous on-property program). Hawks on the glove, eye to eye with a Harris's hawk.</li>
+          <li>Lunch on property — <strong>Tavern</strong> at the Broadmoor or <strong>Lake Terrace Dining Room</strong>.</li>
+          <li><strong>Afternoon:</strong> chill. Walk the lakes, swim, gardens, Cheyenne Mountain views. Stroller around the property.</li>
+          <li>Dinner: <strong>Penrose Room</strong> (splurge) or <strong>Summit</strong>.</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="container reveal"><div class="drive"><span class="icon">→</span><div><strong>Springs to Salida</strong> · 2h 45m · 130 mi · US-24 west via Woodland Park, Hartsel, BV. Pull off at Wilkerson Pass for the Collegiate Peaks panorama.</div></div></div>
+
+<!-- BASE 2 -->
+<section id="b2" class="reveal">
+  <div class="container">
+    <article class="base" data-base="2">
+      <div class="base-header">
+        <div class="title-block">
+          <div class="num">BASE 02</div>
+          <h2>Salida</h2>
+        </div>
+        <div class="meta-block">
+          <span class="dates">Tue · May 27</span>
+          <span class="elev-pill">7,083 ft</span> · 1 night
+          <div class="base-coord">38.53°N · 105.99°W</div>
+        </div>
+      </div>
+
+      <div class="tags">
+        <span class="tag tag-stay">Amigo Motor Lodge</span>
+        <span class="tag tag-soak">Mt. Princeton</span>
+        <span class="tag tag-eat">Asian Palate</span>
+      </div>
+
+      <h4>Lodging</h4>
+      <p><strong>Downtown hotel near the river — TBD.</strong> Looking for something walkable to F Street, the Riverwalk, and the Arkansas. <em>Candidates:</em> <strong>The Palace Hotel</strong> (historic boutique downtown), <strong>Hotel Andrea</strong> (boutique), riverfront Airbnb on F Street.</p>
+
+      <h4>Afternoon</h4>
+      <ul>
+        <li>Walk <strong>Salida Riverwalk + Riverside Park</strong> — Arkansas River through downtown, whitewater play park.</li>
+        <li>Wander <strong>F Street</strong> — galleries, Howl Mercantile, Bongo Billy's coffee.</li>
+      </ul>
+
+      <h4>Hot springs (~30m north)</h4>
+      <ul>
+        <li><strong>Mt. Princeton Hot Springs</strong> — family pools, creek-side natural pools.</li>
+        <li><strong>Cottonwood Hot Springs</strong> — quieter, rustic, smaller pools.</li>
+      </ul>
+
+      <h4>Dinner</h4>
+      <p><strong>The Asian Palate</strong> (the destination meal — reservations), <strong>Currents</strong> (riverside, fancier), or <strong>Amica's Pizza</strong> (casual patio).</p>
+    </article>
+  </div>
+</section>
+
+<div class="container reveal"><div class="drive"><span class="icon">→</span><div><strong>Salida to Pagosa</strong> · 3h · 165 mi · Hwy 285 south via Saguache and Del Norte, then Wolf Creek Pass. <em>One of the great Colorado drives.</em> Optional morning soak at Mt. Princeton before pushing on. Lunch: Three Barrel Brewing in Del Norte.</div></div></div>
+
+<!-- BASE 3 -->
+<section id="b3" class="reveal">
+  <div class="container">
+    <article class="base" data-base="3">
+      <div class="base-header">
+        <div class="title-block">
+          <div class="num">BASE 03</div>
+          <h2>Pagosa Springs</h2>
+        </div>
+        <div class="meta-block">
+          <span class="dates">Wed · May 28</span>
+          <span class="elev-pill">7,100 ft</span> · 1 night
+          <div class="base-coord">37.27°N · 107.01°W</div>
+        </div>
+      </div>
+
+      <div class="tags">
+        <span class="tag tag-stay">The Springs Resort</span>
+        <span class="tag tag-soak">Riverside terraces</span>
+        <span class="tag tag-eat">Riff Raff on the Rio</span>
+      </div>
+
+      <h4>Lodging</h4>
+      <p><strong>The Springs Resort</strong> (~$350) — on-property soaking terraces, kids welcome in lower pools. <em>Cheaper:</em> downtown Airbnb + Springs day pass.</p>
+
+      <h4>The play</h4>
+      <p>Soak the terraces at sunset and again at sunrise. The riverside pools are unreal.</p>
+
+      <h4>Easy walk</h4>
+      <p>Riverwalk along the San Juan + downtown.</p>
+
+      <h4>Dinner</h4>
+      <p><strong>Riff Raff on the Rio</strong> (riverside, casual) or <strong>Kip's Grill</strong> (Mexican, kid-easy).</p>
+    </article>
+  </div>
+</section>
+
+<div class="container reveal"><div class="drive"><span class="icon">→</span><div><strong>Pagosa to Durango</strong> · 1h · 60 mi · US-160 west. Optional 1-hour stop at Chimney Rock NM (call ahead for upper-site ranger tour).</div></div></div>
+
+<!-- BASE 4 -->
+<section id="b4" class="reveal">
+  <div class="container">
+    <article class="base" data-base="4">
+      <div class="base-header">
+        <div class="title-block">
+          <div class="num">BASE 04</div>
+          <h2>Durango</h2>
+        </div>
+        <div class="meta-block">
+          <span class="dates">Thu – Sat · May 29–31</span>
+          <span class="elev-pill">6,500 ft</span> · 3 nights
+          <div class="base-coord">37.28°N · 107.88°W</div>
+        </div>
+      </div>
+
+      <div class="tags">
+        <span class="tag tag-stay">Animas Valley Airbnb</span>
+        <span class="tag tag-hike">Hermosa Creek</span>
+        <span class="tag tag-eat">James Ranch Grill</span>
+        <span class="tag tag-bike">Animas River Trail</span>
+      </div>
+
+      <h4>Lodging — rural-first</h4>
+      <ul>
+        <li><strong>Animas Valley Airbnb</strong> — cabin or river-side house ~10 min north along the Animas River. <strong>Top pick for all 3 nights.</strong> River sounds, mountain views, drive into town for dinners. Search "Animas Valley" or "Hermosa" on Airbnb.</li>
+        <li><em>In-town alt:</em> <strong>Rochester Hotel</strong> — historic boutique downtown, ~$280.</li>
+        <li><em>Splurge:</em> General Palmer Hotel (Victorian).</li>
+      </ul>
+
+      <div class="day-block">
+        <h4>Day 1 · Mesa Verde (Thu May 29)</h4>
+        <ul>
+          <li>Drive ~45m to <strong>Mesa Verde NP</strong>. Buy timed tickets in advance for <strong>Far View</strong> sites and <strong>Spruce Tree House</strong> overlook (no ladders, carrier-OK).</li>
+          <li>Skip ranger ladder tours (Cliff Palace, Balcony House) — not infant-compatible.</li>
+          <li>Lunch at Far View Lodge or pack one.</li>
+          <li>Lunch stop in <strong>Mancos</strong> (~900-person tiny town) at <strong>Olio</strong> or <strong>Absolute Bakery</strong> on the way back.</li>
+        </ul>
+      </div>
+
+      <div class="day-block">
+        <h4>Day 2 · Hike + chill (Fri May 30)</h4>
+        <ul>
+          <li>Morning hike (carrier-friendly) — pick one:
+            <ul>
+              <li><strong>Hermosa Creek Trail</strong> — ~10 min north, riverside, low-altitude, pick any segment.</li>
+              <li><strong>Junction Creek / Colorado Trail start</strong> — gentle ascent, turn around at will.</li>
+              <li><strong>Animas Mountain Trail</strong> — 3.5 mi loop in town, ~1,200 ft gain, big views.</li>
+            </ul>
+          </li>
+          <li>Lunch at <strong>James Ranch Grill</strong> — working ranch with farm-to-table burgers, outdoor seating with mountain views.</li>
+          <li>Afternoon: chill at the Animas Valley Airbnb. River walk, porch nap, slow rural day.</li>
+          <li>Dinner: cook in or <strong>El Moro Tavern</strong> in town.</li>
+        </ul>
+      </div>
+
+      <div class="day-block">
+        <h4>Day 3 · Town + train (Sat May 31)</h4>
+        <ul>
+          <li>Morning: <strong>Durango–Silverton Train</strong>, half-day to Cascade Canyon (~3.5h round trip — confirm off-season schedule). Optional — Million Dollar Hwy is now part of tomorrow's drive, so skip if it's too much.</li>
+          <li><em>Or</em> walk/bike the <strong>Animas River Trail</strong> — paved, 7+ mi. Rentals at Pedal the Peaks.</li>
+          <li>Late lunch wandering Main Ave.</li>
+          <li>Pack up for tomorrow's scenic drive to Ridgway.</li>
+        </ul>
+      </div>
+
+      <h4>Dinners</h4>
+      <p><strong>El Moro Tavern</strong>, <strong>Ore House</strong> (steakhouse splurge), or <strong>Eolus</strong> (small plates).</p>
+    </article>
+  </div>
+</section>
+
+<div class="container reveal"><div class="drive"><span class="icon">→</span><div><strong>Durango to Ridgway via Million Dollar Highway</strong> · ~3h · 110 mi · <em>The iconic San Juans drive — the move IS the experience.</em> US-550 north → <strong>Coal Bank Pass</strong> (10,640 ft) → <strong>Molas Pass</strong> (10,910 ft, stunning views) → <strong>Silverton</strong> (lunch at <strong>Avalanche Brewing</strong>, walk Greene Street; 9,300 ft so don't linger) → <strong>Red Mountain Pass</strong> (11,018 ft, the famous mining-country hairpins) → <strong>Ouray</strong> (Switzerland of America) → Ridgway. <em>Eliminates the need for a separate Million Dollar Hwy day from Ridgway.</em> Leave Durango by 9, lunch in Silverton, arrive Ridgway mid-afternoon.</div></div></div>
+
+<!-- BASE 5 -->
+<section id="b5" class="reveal">
+  <div class="container">
+    <article class="base" data-base="5">
+      <div class="base-header">
+        <div class="title-block">
+          <div class="num">BASE 05</div>
+          <h2>Ridgway / Ouray</h2>
+        </div>
+        <div class="meta-block">
+          <span class="dates">Sun – Wed · Jun 1–4</span>
+          <span class="elev-pill">7,000–7,800 ft</span> · 4 nights
+          <div class="base-coord">38.15°N · 107.75°W</div>
+        </div>
+      </div>
+
+      <div class="tags">
+        <span class="tag tag-stay">Ridgway cabin + Beaumont</span>
+        <span class="tag tag-hike">Bear Creek Trail</span>
+        <span class="tag tag-hike">Yankee Boy Basin</span>
+        <span class="tag tag-soak">Ouray Hot Springs</span>
+        <span class="tag tag-eat">Bon Ton</span>
+      </div>
+
+      <h4>Lodging — split the 4 nights</h4>
+      <ul>
+        <li><strong>Nights 1–3 (Jun 1–3):</strong> Airbnb cabin in Ridgway (Hartwell Park or N of town with mountain views) — ~$200/night.</li>
+        <li><strong>Night 4 (Jun 4):</strong> <strong>Beaumont Hotel, Ouray</strong> — Victorian splurge, ~$320.</li>
+      </ul>
+
+      <div class="day-block">
+        <h4>Day 1 · Settle + Ouray Hot Springs (Sun Jun 1)</h4>
+        <ul>
+          <li>Arrive after the Million Dollar Hwy drive. Decompress.</li>
+          <li>Walk Ridgway downtown — Cimarron Books, True Grit Café (yes, that True Grit).</li>
+          <li>Late afternoon: <strong>Ouray Hot Springs Pool</strong> (10m south) — shallow family sections.</li>
+          <li>Dinner: <strong>Maggie's Kitchen</strong> (Ouray) or <strong>The Adobe Inn</strong> (Ridgway).</li>
+        </ul>
+      </div>
+
+      <div class="day-block">
+        <h4>Day 2 · Telluride day trip <em>— the Dolomites moment</em> (Mon Jun 2)</h4>
+        <ul>
+          <li>Drive ~45m over <strong>Dallas Divide</strong> (one of the most photographed views in CO) to Telluride.</li>
+          <li>Ride the <strong>free gondola</strong> Telluride ↔ Mountain Village.</li>
+          <li>Lunch options: <strong>Allred's</strong> at the gondola top (call to confirm off-season), <strong>Brown Dog Pizza</strong>, <strong>221 South Oak</strong>, or <strong>There</strong>.</li>
+          <li>Walk <strong>Bear Creek Trail</strong> or <strong>Cornet Falls</strong> (short, dramatic) from town.</li>
+          <li>Optional drive partway to <strong>Bridal Veil Falls</strong>.</li>
+          <li>Back to Ridgway for low-altitude sleep.</li>
+        </ul>
+      </div>
+
+      <div class="day-block">
+        <h4>Day 3 · Hiking day (Tue Jun 3)</h4>
+        <p>Pick one based on energy and weather. All carrier-friendly:</p>
+        <ul>
+          <li><strong>Bear Creek Trail (Telluride)</strong> — switchbacks up a dramatic canyon. Steep but the first 30–45 min are doable; views payoff fast.</li>
+          <li><strong>Yankee Boy Basin</strong> — drive a 4WD/AWD road up from Ouray into a wildflower bowl; easy meadow walks at the top.</li>
+          <li><strong>Twin Peaks Trail (Ouray)</strong> — moderate, ~3 mi RT, ~1,000 ft gain, big views back over town.</li>
+          <li><strong>Box Canyon + Cascade Falls combo (Ouray)</strong> — quick wins, both 5-min walks, dramatic.</li>
+          <li><strong>Ridgway State Park lake trails</strong> — flat, easy, family-friendly.</li>
+        </ul>
+        <p><em>Sam solo morning option:</em> <strong>Blue Lakes Trail</strong> — ~7 mi RT, 1,800 ft gain. One of the most-photographed alpine lakes in CO.</p>
+      </div>
+
+      <div class="day-block">
+        <h4>Day 4 · Black Canyon + Owl Creek Pass (Wed Jun 4)</h4>
+        <ul>
+          <li>Morning: drive ~50m to <strong>Black Canyon south rim</strong>. Drive the rim road, short stroller-OK overlooks (Pulpit Rock, Sunset View, Painted Wall). Picnic lunch on the rim.</li>
+          <li>Afternoon: optional <strong>Owl Creek Pass Road</strong> dirt drive (east from Ridgway) — gravel, ranchland and aspens to a high pass with Cimarron Range views. Almost zero traffic.</li>
+          <li>Move to <strong>Beaumont Hotel</strong> in Ouray for a Victorian-splurge final night.</li>
+          <li>Dinner: <strong>Bon Ton</strong> at the St Elmo Hotel (Ouray, splurge).</li>
+        </ul>
+      </div>
+
+      <h4>Road bike</h4>
+      <p>Ridgway → Colona → back, or the Uncompahgre Riverway path. Quiet shoulders early. Slot it on Day 1 evening or Day 3 morning.</p>
+    </article>
+  </div>
+</section>
+
+<div class="container reveal"><div class="drive"><span class="icon">→</span><div><strong>Ouray to Redstone</strong> · 4h · 165 mi · US-50 west to Montrose, Hwy 92 east along Black Canyon's <strong>north rim</strong> through Crawford and Hotchkiss, then through <strong>Paonia</strong>, then Hwy 133 north over <strong>McClure Pass</strong>. <em>The prettiest transit day of the trip.</em> <strong>Lunch in Paonia</strong> (~1,400, bohemian orchard town) at <strong>Living Farm Café</strong> or <strong>Revolution Brewing</strong> — fruit stands and small wineries (Stone Cottage, Black Bridge) if in season.</div></div></div>
+
+<!-- BASE 6 -->
+<section id="b6" class="reveal">
+  <div class="container">
+    <article class="base" data-base="6">
+      <div class="base-header">
+        <div class="title-block">
+          <div class="num">BASE 06</div>
+          <h2>Redstone / Marble</h2>
+        </div>
+        <div class="meta-block">
+          <span class="dates">Thu · Jun 5</span>
+          <span class="elev-pill">6,800 ft</span> · 1 night
+          <div class="base-coord">39.18°N · 107.24°W</div>
+        </div>
+      </div>
+
+      <div class="tags">
+        <span class="tag tag-stay">Avalanche Ranch</span>
+        <span class="tag tag-soak">Private wood-fired tub</span>
+        <span class="tag tag-eat">Slow Groovin' BBQ</span>
+      </div>
+
+      <h4>Lodging</h4>
+      <p><strong>Avalanche Ranch Cabins + Hot Springs</strong> — book the cabin with private outdoor wood-fired tub. ~$300–500. <strong>Books up early — chase first.</strong> <em>Backup:</em> Redstone Inn (historic, ~$180).</p>
+
+      <h4>Afternoon</h4>
+      <ul>
+        <li><strong>Redstone Boulevard</strong> — old coal-coking ovens, Redstone Castle exterior, tiny art galleries.</li>
+        <li><strong>Marble (30m up):</strong> Crystal Mill itself needs 4WD or a 4-mi hike each way (skip with Jonah). But Marble town is worth it — quarry views, <strong>Slow Groovin' BBQ</strong> for lunch.</li>
+        <li>Hot tub at sunset. The whole point.</li>
+      </ul>
+
+      <h4>Dinner</h4>
+      <p>Grill at the cabin, or <strong>Crystal Club Café</strong> in Redstone (limited; check hours).</p>
+    </article>
+  </div>
+</section>
+
+<div class="container reveal"><div class="drive"><span class="icon">→</span><div><strong>Redstone to Carbondale</strong> · 50m · 30 mi · Hwy 133 north.</div></div></div>
+
+<!-- BASE 7 -->
+<section id="b7" class="reveal">
+  <div class="container">
+    <article class="base" data-base="7">
+      <div class="base-header">
+        <div class="title-block">
+          <div class="num">BASE 07</div>
+          <h2>Carbondale</h2>
+        </div>
+        <div class="meta-block">
+          <span class="dates">Fri – Sat · Jun 6–7</span>
+          <span class="elev-pill">6,180 ft</span> · 2 nights
+          <div class="base-coord">39.40°N · 107.21°W</div>
+        </div>
+      </div>
+
+      <div class="tags">
+        <span class="tag tag-stay">Sopris-view Airbnb</span>
+        <span class="tag tag-bike">Maroon Bells dawn ride</span>
+        <span class="tag tag-hike">Hay Park Trail</span>
+        <span class="tag tag-soak">Penny Hot Springs</span>
+        <span class="tag tag-eat">Pine Creek Cookhouse</span>
+      </div>
+
+      <h4>Lodging</h4>
+      <ul>
+        <li>Airbnb in town with a <strong>Mt. Sopris view</strong> — the entire reason we're here. <strong>Top pick.</strong></li>
+        <li><strong>Distillery Inn at Marble Distilling</strong> — boutique, ~$250.</li>
+      </ul>
+
+      <div class="day-block">
+        <h4>Day 1 · Settle in (Jun 6, after arriving from Redstone)</h4>
+        <ul>
+          <li>Coffee at <strong>Bonfire</strong>.</li>
+          <li>Easy hike: <strong>Hay Park Trail</strong> (Sopris views, lower elevation) — turn around as needed.</li>
+          <li>Road bike: <strong>Rio Grande Trail</strong> Carbondale → Basalt — paved, mostly flat, valley views.</li>
+          <li><strong>Penny Hot Springs</strong> at sunset — free, riverside, 15m south on Hwy 133.</li>
+          <li>Dinner: <strong>Town</strong> (modern American), <strong>Allegria</strong> (Italian), <strong>Phat Thai</strong>, or <strong>Free Range Kitchen</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="day-block">
+        <h4>Day 2 · Aspen + Maroon Bells day trip (Jun 7)</h4>
+        <ul>
+          <li><strong>Dawn bike to Maroon Bells (Sam):</strong> drive 35m to Aspen, ride from Aspen Highlands lot up Maroon Creek Road. ~5 mi each way, paved, ~1,200 ft of climb (8,200 → 9,580 ft). <strong>Road is closed to cars before 8am</strong> — empty, silent, alpenglow on the Bells. <em>Bucket-list CO road-bike experience.</em> ~2h round trip. Rentals: <strong>Hub of Aspen</strong> or <strong>Aspen Velo</strong> — reserve a road bike the day before.</li>
+          <li>Meanwhile: Gigi + Jonah sleep in. Optional later <strong>Maroon Bells shuttle</strong> (recreation.gov, opens ~30 days out) up to the lake to meet you in Aspen, or breakfast in town.</li>
+          <li>Late morning: regroup, breakfast at <strong>Bonnie's</strong> or <strong>Spring Café</strong>.</li>
+          <li>Lunch options: <strong>Woody Creek Tavern</strong> in Woody Creek (~250-person hamlet, Hunter S. Thompson's old hangout, kitschy roadhouse with a ridiculous patio), or <strong>Meat &amp; Cheese</strong>, <strong>White House Tavern</strong>, or <strong>Hooch</strong> in Aspen.</li>
+          <li>Afternoon: drive Castle Creek Road to <strong>Ashcroft Ghost Town</strong> (30m south of Aspen, free) — preserved 1880s mining village in a meadow with the Elk Range behind it.</li>
+          <li>Wander Aspen, ride the <strong>Silver Queen Gondola</strong> if running, <strong>cocktails at the J-Bar</strong> at Hotel Jerome (CO institution since 1889).</li>
+          <li>Drive 35m back to Carbondale to sleep low.</li>
+          <li>Dinner: back in Carbondale at <strong>Town</strong> or <strong>Allegria</strong>, or splurge at <strong>Pine Creek Cookhouse</strong> in Ashcroft on the way back (reserve weeks ahead).</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<div class="container reveal"><div class="drive"><span class="icon">→</span><div><strong>Carbondale to DEN</strong> · two options.<br><br><strong>Scenic via Independence Pass · ~4.5h · 200 mi</strong> (recommended if open) — Hwy 82 east through Aspen → <strong>Independence Ghost Town</strong> (20 min from Aspen, ~10,900 ft, abandoned 1879 mining settlement, free 15-min walk-around) → <strong>Independence Pass summit (12,095 ft)</strong> — quick gawk, push down → Twin Lakes → Leadville (coffee at City on a Hill or Periodic Brewing) → Copper → I-70 east → DEN.<br><br><strong>Direct via I-70 · ~3h · 165 mi</strong> — Hwy 82 north → I-70 east through Glenwood Canyon, Vail Pass, Frisco. Lunch at <strong>Beau Jo's</strong> in Idaho Springs.<br><br><em>Caveat:</em> Indep Pass closes Nov to late May. Should be open by Jun 8 — check <strong>cotrip.org</strong> day-of.</div></div></div>
+
+<!-- RESERVATIONS -->
+<section id="book" class="alt-bg reveal">
+  <div class="container">
+    <h2>Reservations to lock</h2>
+    <p style="color: var(--ink-muted)">In rough priority order. Saved locally — checks persist on this device.</p>
+    <div class="progress-label"><span id="bookCountLabel">0 of 0 booked</span><span id="bookPercent">0%</span></div>
+    <div class="progress"><div class="progress-bar" id="bookProgress" style="width: 0"></div></div>
+    <ul class="checklist" id="bookings">
+      <li><span class="priority">1</span><input type="checkbox" id="r1"><label for="r1"><strong>Avalanche Ranch hot-tub cabin</strong> · Jun 5 · most likely to sell out — <a href="https://avalancheranch.com" target="_blank">site</a></label></li>
+      <li><span class="priority">2</span><input type="checkbox" id="r2"><label for="r2"><strong>The Springs Resort, Pagosa</strong> · May 28 — <a href="https://www.pagosahotsprings.com" target="_blank">site</a></label></li>
+      <li><span class="priority">3</span><input type="checkbox" id="r3"><label for="r3"><strong>Amigo Motor Lodge, Salida</strong> · May 27 — <a href="https://stayamigo.com" target="_blank">site</a></label></li>
+      <li><span class="priority">4</span><input type="checkbox" id="r4"><label for="r4"><strong>Beaumont Hotel, Ouray</strong> · Jun 4 — <a href="https://beaumontouray.com" target="_blank">site</a></label></li>
+      <li><span class="priority">5</span><input type="checkbox" id="r5"><label for="r5"><strong>Animas Valley Airbnb, Durango</strong> · May 29–31 — search "Animas Valley" or "Hermosa" on Airbnb</label></li>
+      <li><span class="priority">6</span><input type="checkbox" id="r6"><label for="r6"><strong>Carbondale lodging</strong> · Jun 6–7 · Sopris-view Airbnb</label></li>
+      <li><span class="priority">7</span><input type="checkbox" id="r7"><label for="r7"><strong>Mesa Verde timed tickets</strong> · once your date is in window — <a href="https://www.recreation.gov/ticket/facility/234034" target="_blank">recreation.gov</a></label></li>
+      <li><span class="priority">8</span><input type="checkbox" id="r8"><label for="r8"><strong>Maroon Bells shuttle</strong> · opens ~30 days out — <a href="https://www.recreation.gov/timed-entry/10089237" target="_blank">recreation.gov</a></label></li>
+      <li><span class="priority">9</span><input type="checkbox" id="r9"><label for="r9"><strong>Pine Creek Cookhouse, Ashcroft</strong> · books weeks out — <a href="https://www.pinecreekcookhouse.com" target="_blank">site</a></label></li>
+      <li><span class="priority">10</span><input type="checkbox" id="r10"><label for="r10"><strong>Hub of Aspen</strong> bike rental for Jun 7 dawn — call ahead</label></li>
+    </ul>
+  </div>
+</section>
+
+<!-- PACK LIST -->
+<section id="pack" class="reveal">
+  <div class="container">
+    <h2>Pack list — baby flags</h2>
+    <div class="progress-label"><span id="packCountLabel">0 of 0 packed</span><span id="packPercent">0%</span></div>
+    <div class="progress"><div class="progress-bar" id="packProgress" style="width: 0"></div></div>
+    <ul class="checklist" id="packlist">
+      <li><input type="checkbox" id="p1"><label for="p1">Pulse oximeter (Owlet sock or finger clip)</label></li>
+      <li><input type="checkbox" id="p2"><label for="p2">Sun shade for car rear window</label></li>
+      <li><input type="checkbox" id="p3"><label for="p3">All-terrain stroller (jogger or BOB)</label></li>
+      <li><input type="checkbox" id="p4"><label for="p4">Carrier — Ergo / Tula (most hikes are carrier, not stroller)</label></li>
+      <li><input type="checkbox" id="p5"><label for="p5">White noise + portable fan</label></li>
+      <li><input type="checkbox" id="p6"><label for="p6">Layers — high-country mornings drop into the 30s in late May</label></li>
+      <li><input type="checkbox" id="p7"><label for="p7">Infant-rated sunscreen + long sleeves</label></li>
+      <li><input type="checkbox" id="p8"><label for="p8">Second car-seat base (if Gigi will drive too)</label></li>
+      <li><input type="checkbox" id="p9"><label for="p9">Pediatrician check + acetaminophen dosing notes</label></li>
+    </ul>
+
+    <hr>
+
+    <h4>Things deliberately cut</h4>
+    <ul>
+      <li><strong>Boulder</strong> — saves Sun-night drive panic.</li>
+      <li><strong>Glenwood Springs as a base</strong> — half-day visit from Carbondale instead.</li>
+      <li><strong>Great Sand Dunes</strong> — wrong direction; 100°F sand is rough with Jonah.</li>
+      <li><strong>Crested Butte sleep</strong> — too high.</li>
+      <li><strong>Telluride sleep</strong> — too high. Day trip from Ridgway covers it.</li>
+      <li><strong>Dolores</strong> — Telluride moved to Ridgway, so Dolores stopped earning its keep.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOR JONAH (memento) -->
+<section id="for-jonah" class="reveal">
+  <div class="dear-jonah">
+    <div class="eyebrow">A note for later</div>
+    <h2>For Jonah</h2>
+    <div class="dear-jonah-meta">May–June 2026 · You were three months old</div>
+
+    <div class="dear-letter">
+      <p class="opening">Hi, kid.</p>
+      <p>This was your first time in the mountains.</p>
+      <p>We drove about nine hundred miles around Colorado together. You napped through five mountain passes. We dipped your feet at the hot springs in Pagosa, and we carried you on Dad's chest up Bear Creek Trail to see the waterfall. You watched the alpenglow on the Maroon Bells from your stroller while Dad rode his bike up the empty road at sunrise. You met a Harris's hawk on the very first day.</p>
+      <p>Some things from the trip, for you to know later:</p>
+    </div>
+
+    <ul class="dear-stats">
+      <li><span class="dear-key">Your age</span><span class="dear-val">3 months</span></li>
+      <li><span class="dear-key">Miles together</span><span class="dear-val">~870</span></li>
+      <li><span class="dear-key">Mountain passes</span><span class="dear-val">Five</span></li>
+      <li><span class="dear-key">Highest you got</span><span class="dear-val">Independence Pass · 12,095 ft</span></li>
+      <li><span class="dear-key">Lowest you slept</span><span class="dear-val">Carbondale · 6,180 ft</span></li>
+      <li><span class="dear-key">Oldest place</span><span class="dear-val">Mesa Verde · ~800 yrs older than you</span></li>
+      <li><span class="dear-key">Hot springs</span><span class="dear-val">Pagosa, Mt. Princeton, Ouray, Avalanche Ranch</span></li>
+      <li><span class="dear-key">First Rockies</span><span class="dear-val">14ers in every direction</span></li>
+      <li><span class="dear-key">Mom's favorite moment</span><span class="dear-val">— for Mom to fill in —</span></li>
+      <li><span class="dear-key">Dad's favorite moment</span><span class="dear-val">— for Dad to fill in —</span></li>
+    </ul>
+
+    <div class="dear-letter">
+      <p>You were small and we held you a lot. You won't remember any of this. But we wanted you here, and we wanted you to know.</p>
+      <p>We love you, kid. Welcome to the road.</p>
+    </div>
+
+    <div class="dear-sign">— Mom &amp; Dad</div>
+    <div class="dear-sign-meta">May 25 – June 8, 2026</div>
+
+    <div class="dear-photos">
+      <div class="photo-slot">First flight</div>
+      <div class="photo-slot">First hike</div>
+      <div class="photo-slot">First hot spring</div>
+      <div class="photo-slot">Asleep on a pass</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built with care · Last updated <span id="updated"></span></p>
+  <div class="foot-links">
+    <a href="for-jonah.html">For Jonah · keepsake</a>
+    <a href="jonah-book.html">For Jonah · picture book</a>
+    <a href="colorado-trip.md">Markdown source</a>
+    <button onclick="window.print()">Print</button>
+    <button id="themeToggleFoot">Toggle theme</button>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+// ============== DATA ==============
+const TRIP_START = new Date('2026-05-25');
+const TRIP_END   = new Date('2026-06-08');
+
+const DAYS = [
+  // [date,        baseId, baseName,           elev,  activity,                                                  isMove]
+  ['2026-05-25', 1, 'Colorado Springs',     6000, 'Arrive DEN, drive to Broadmoor',                            true],
+  ['2026-05-26', 1, 'Colorado Springs',     6000, 'Garden of the Gods, Broadmoor',                             false],
+  ['2026-05-27', 2, 'Salida',               7083, 'Drive over from Springs, Mt. Princeton soak',               true],
+  ['2026-05-28', 3, 'Pagosa Springs',       7100, 'Wolf Creek Pass drive, terrace soak',                       true],
+  ['2026-05-29', 4, 'Durango',              6500, 'Mesa Verde + Mancos lunch',                                 true],
+  ['2026-05-30', 4, 'Durango',              6500, 'Hike + Animas Valley chill',                                false],
+  ['2026-05-31', 4, 'Durango',              6500, 'Town + Animas River + train',                               false],
+  ['2026-06-01', 5, 'Ridgway / Ouray',      7000, 'Million Dollar Hwy drive, Ouray Hot Springs',               true],
+  ['2026-06-02', 5, 'Ridgway / Ouray',      7000, 'Telluride day trip — Dolomites moment',                     false],
+  ['2026-06-03', 5, 'Ridgway / Ouray',      7000, 'Hiking day — Bear Creek / Yankee Boy / Twin Peaks',         false],
+  ['2026-06-04', 5, 'Ouray (Beaumont)',     7800, 'Black Canyon + Owl Creek Pass',                             false],
+  ['2026-06-05', 6, 'Redstone / Marble',    6800, 'Drive via Paonia, hot-tub cabin sunset',                    true],
+  ['2026-06-06', 7, 'Carbondale',           6180, 'Sopris evening, Penny Hot Springs',                         true],
+  ['2026-06-07', 7, 'Carbondale (Aspen day)', 6180, 'Maroon Bells dawn bike, Aspen, Ashcroft',                 false],
+];
+
+const BASES = [
+  { id: 1, num: '01', name: 'Colorado Springs', meta: 'May 25–26 · 6,000 ft',         nights: '2 nights', coords: [38.7836, -104.8458], dates: 'May 25–26' },
+  { id: 2, num: '02', name: 'Salida',           meta: 'May 27 · 7,083 ft',            nights: '1 night',  coords: [38.5347, -105.9989], dates: 'May 27' },
+  { id: 3, num: '03', name: 'Pagosa Springs',   meta: 'May 28 · 7,100 ft',            nights: '1 night',  coords: [37.2694, -107.0098], dates: 'May 28' },
+  { id: 4, num: '04', name: 'Durango',          meta: 'May 29–31 · 6,500 ft',         nights: '3 nights', coords: [37.2753, -107.8801], dates: 'May 29–31' },
+  { id: 5, num: '05', name: 'Ridgway / Ouray',  meta: 'Jun 1–4 · 7,000 ft',           nights: '4 nights', coords: [38.1530, -107.7547], dates: 'Jun 1–4 · via Million Dollar Hwy' },
+  { id: 6, num: '06', name: 'Redstone',         meta: 'Jun 5 · 6,800 ft',             nights: '1 night',  coords: [39.1822, -107.2381], dates: 'Jun 5' },
+  { id: 7, num: '07', name: 'Carbondale',       meta: 'Jun 6–7 · 6,180 ft',           nights: '2 nights', coords: [39.4022, -107.2117], dates: 'Jun 6–7' },
+];
+
+const ROUTE_POINTS = [
+  [39.8617, -104.6731], // DEN
+  ...BASES.map(b => b.coords),
+  [39.8617, -104.6731], // DEN return
+];
+
+// ============== TRIP STRIP ==============
+const stripInner = document.getElementById('stripInner');
+BASES.forEach(b => {
+  const div = document.createElement('div');
+  div.className = 'strip-card';
+  div.innerHTML = `<a href="#b${b.id}"><div class="num">${b.num}</div><div class="name">${b.name}</div><div class="meta">${b.meta}</div><div class="nights">${b.nights}</div></a>`;
+  stripInner.appendChild(div);
+});
+
+// ============== CALENDAR ==============
+const calGrid = document.getElementById('calGrid');
+const dowAbbr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+DAYS.forEach((d, i) => {
+  const [iso, baseId, baseName, elev, activity, isMove] = d;
+  const date = new Date(iso + 'T12:00:00');
+  const monthDay = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  const dow = dowAbbr[date.getDay()];
+  const cell = document.createElement('button');
+  cell.className = 'cal-day' + (isMove ? ' travel-day' : '');
+  cell.innerHTML = `
+    <div class="cal-dow">${dow}</div>
+    <div class="cal-date">${monthDay.split(' ')[1]}</div>
+    <div class="cal-base">${baseName}</div>
+    <div class="cal-act">${activity}</div>
+    <div class="cal-elev">${elev.toLocaleString()} ft</div>
+  `;
+  cell.addEventListener('click', () => {
+    document.getElementById('b' + baseId).scrollIntoView({behavior: 'smooth', block: 'start'});
+  });
+  cell.dataset.iso = iso;
+  cell.dataset.baseId = baseId;
+  calGrid.appendChild(cell);
+});
+
+// ============== ELEVATION CHART ==============
+const elev = document.getElementById('elevSvg');
+const W = 800, H = 360;
+const PAD_L = 50, PAD_R = 30, PAD_T = 30, PAD_B = 60;
+const CW = W - PAD_L - PAD_R, CH = H - PAD_T - PAD_B;
+const minE = 5500, maxE = 13000;
+const xFor = i => PAD_L + (i / (DAYS.length - 1)) * CW;
+const yFor = e => PAD_T + (1 - (e - minE) / (maxE - minE)) * CH;
+
+let elevHTML = '';
+// Y axis grid + labels (every 1000 ft)
+for (let e = 6000; e <= 13000; e += 1000) {
+  const y = yFor(e);
+  elevHTML += `<line class="elev-axis" x1="${PAD_L}" y1="${y}" x2="${W - PAD_R}" y2="${y}" opacity="0.3"/>`;
+  elevHTML += `<text class="elev-axis-label" x="${PAD_L - 8}" y="${y + 3}" text-anchor="end">${(e/1000).toFixed(0)}k</text>`;
+}
+// 8000 ft watch line
+const watchY = yFor(8000);
+elevHTML += `<line class="elev-watch" x1="${PAD_L}" y1="${watchY}" x2="${W - PAD_R}" y2="${watchY}"/>`;
+elevHTML += `<text class="elev-watch-label" x="${W - PAD_R}" y="${watchY - 5}" text-anchor="end">Sleep watch line · 8,000 ft</text>`;
+// High-altitude day-trip zone (above 10,000 ft)
+elevHTML += `<rect class="elev-zone-fill" x="${PAD_L}" y="${PAD_T}" width="${CW}" height="${yFor(10000) - PAD_T}"/>`;
+// Area + line
+const points = DAYS.map((d, i) => [xFor(i), yFor(d[3])]);
+const linePath = points.map((p, i) => (i === 0 ? 'M' : 'L') + p.join(',')).join(' ');
+const areaPath = `M${points[0][0]},${PAD_T + CH} ` + points.map(p => `L${p.join(',')}`).join(' ') + ` L${points[points.length-1][0]},${PAD_T + CH} Z`;
+elevHTML += `<path class="elev-area" d="${areaPath}"/>`;
+elevHTML += `<path class="elev-line" d="${linePath}"/>`;
+// Dots + labels
+DAYS.forEach((d, i) => {
+  const x = xFor(i), y = yFor(d[3]);
+  elevHTML += `<circle class="elev-dot" cx="${x}" cy="${y}" r="4"/>`;
+});
+// X labels (every 2 days)
+DAYS.forEach((d, i) => {
+  if (i % 2 !== 0 && i !== DAYS.length - 1) return;
+  const x = xFor(i);
+  const date = new Date(d[0] + 'T12:00:00');
+  const lbl = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  elevHTML += `<text class="elev-day-label" x="${x}" y="${PAD_T + CH + 18}" text-anchor="middle">${lbl}</text>`;
+});
+// Annotations for key day-trip peaks
+const ANNOTS = [
+  { i: 1.5, e: 14115, label: 'Pikes Peak (drive only)' },
+  { i: 13.5, e: 12095, label: 'Independence Pass (Mon · drive to DEN)' },
+];
+ANNOTS.forEach(a => {
+  const x = xFor(a.i), y = yFor(a.e);
+  elevHTML += `<circle cx="${x}" cy="${y}" r="3" fill="var(--gold)"/>`;
+  elevHTML += `<text class="elev-zone-label" x="${x + 6}" y="${y + 4}">${a.label}</text>`;
+});
+elev.innerHTML = elevHTML;
+
+// ============== MAP ==============
+const map = L.map('map', { scrollWheelZoom: false, zoomControl: true }).setView([38.5, -106.5], 7);
+const lightTiles = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+  attribution: 'Map data: &copy; OpenStreetMap, SRTM | Style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)',
+  subdomains: 'abc', maxZoom: 17,
+});
+const darkTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+  attribution: '&copy; OpenStreetMap &copy; CARTO',
+  subdomains: 'abcd', maxZoom: 19,
+});
+let activeTiles = lightTiles.addTo(map);
+
+L.polyline(ROUTE_POINTS, { color: '#B0411F', weight: 3, opacity: 0.85, dashArray: '6,6' }).addTo(map);
+
+// DEN endpoints
+[ROUTE_POINTS[0]].forEach(c => {
+  L.circleMarker(c, { radius: 7, color: '#1F1A14', weight: 2, fillColor: '#FAF6EE', fillOpacity: 1 })
+    .addTo(map).bindPopup('<strong>DEN Airport</strong>');
+});
+
+BASES.forEach(b => {
+  const icon = L.divIcon({
+    className: '',
+    html: `<div class="marker-base">${b.num.replace(/^0/, '')}</div>`,
+    iconSize: [32, 32], iconAnchor: [16, 16],
+  });
+  L.marker(b.coords, { icon }).addTo(map)
+    .bindPopup(`<strong>${b.name}</strong><br>${b.dates}`);
+});
+
+map.fitBounds(L.latLngBounds(ROUTE_POINTS).pad(0.05));
+
+// ============== TABS ==============
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelector(`.view-panel[data-panel="${tab.dataset.view}"]`).classList.add('active');
+    if (tab.dataset.view === 'map') setTimeout(() => map.invalidateSize(), 50);
+  });
+});
+
+// ============== TODAY INDICATOR ==============
+function checkToday() {
+  const now = new Date();
+  const today = now.toISOString().split('T')[0];
+  const banner = document.getElementById('todayBanner');
+  const todayDay = DAYS.find(d => d[0] === today);
+
+  if (todayDay) {
+    document.getElementById('todayLabel').textContent = 'TODAY · ' + new Date(today + 'T12:00:00').toLocaleDateString('en-US', {weekday: 'long', month: 'short', day: 'numeric'});
+    document.getElementById('todayBase').textContent = todayDay[2] + ' · ' + todayDay[4];
+    const action = document.getElementById('todayAction');
+    action.href = '#b' + todayDay[1];
+    banner.style.display = 'block';
+    document.querySelectorAll(`.base[data-base="${todayDay[1]}"]`).forEach(el => el.classList.add('is-today'));
+    document.querySelectorAll(`.cal-day[data-iso="${today}"]`).forEach(el => el.classList.add('is-today'));
+  } else if (now < TRIP_START) {
+    const days = Math.ceil((TRIP_START - now) / 86400000);
+    document.getElementById('todayLabel').textContent = 'COUNTDOWN';
+    document.getElementById('todayBase').textContent = `${days} days until departure`;
+    document.getElementById('todayAction').textContent = 'See Day 1 →';
+    document.getElementById('todayAction').href = '#b1';
+    banner.style.display = 'block';
+  }
+}
+checkToday();
+
+// ============== CHECKLIST PROGRESS ==============
+function updateProgress(listId, progressId, percentId, labelId) {
+  const list = document.getElementById(listId);
+  const cbs = list.querySelectorAll('input[type=checkbox]');
+  const total = cbs.length;
+  const checked = Array.from(cbs).filter(cb => cb.checked).length;
+  const pct = total ? Math.round(100 * checked / total) : 0;
+  document.getElementById(progressId).style.width = pct + '%';
+  document.getElementById(percentId).textContent = pct + '%';
+  document.getElementById(labelId).textContent = `${checked} of ${total} ${listId === 'bookings' ? 'booked' : 'packed'}`;
+}
+
+['bookings', 'packlist'].forEach(id => {
+  const list = document.getElementById(id);
+  const progressId = id === 'bookings' ? 'bookProgress' : 'packProgress';
+  const percentId = id === 'bookings' ? 'bookPercent' : 'packPercent';
+  const labelId = id === 'bookings' ? 'bookCountLabel' : 'packCountLabel';
+  list.querySelectorAll('input[type=checkbox]').forEach(cb => {
+    const key = id + ':' + cb.id;
+    cb.checked = localStorage.getItem(key) === '1';
+    cb.addEventListener('change', () => {
+      localStorage.setItem(key, cb.checked ? '1' : '0');
+      updateProgress(id, progressId, percentId, labelId);
+    });
+  });
+  updateProgress(id, progressId, percentId, labelId);
+});
+
+// ============== THEME TOGGLE ==============
+const themeKey = 'co-trip-theme';
+const stored = localStorage.getItem(themeKey);
+if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  document.documentElement.dataset.theme = 'dark';
+  swapTiles(true);
+}
+
+function swapTiles(isDark) {
+  if (!map) return;
+  if (isDark) {
+    if (activeTiles !== darkTiles) { map.removeLayer(activeTiles); darkTiles.addTo(map); activeTiles = darkTiles; }
+  } else {
+    if (activeTiles !== lightTiles) { map.removeLayer(activeTiles); lightTiles.addTo(map); activeTiles = lightTiles; }
+  }
+}
+
+function toggleTheme() {
+  const isDark = document.documentElement.dataset.theme === 'dark';
+  document.documentElement.dataset.theme = isDark ? 'light' : 'dark';
+  localStorage.setItem(themeKey, isDark ? 'light' : 'dark');
+  swapTiles(!isDark);
+  document.getElementById('themeToggle').textContent = isDark ? '☾' : '☀';
+}
+document.getElementById('themeToggle').textContent = document.documentElement.dataset.theme === 'dark' ? '☀' : '☾';
+document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+document.getElementById('themeToggleFoot').addEventListener('click', toggleTheme);
+
+// ============== SCROLL REVEAL ==============
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.05 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ============== MISC ==============
+document.getElementById('updated').textContent = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+</script>
+</body>
+</html>
