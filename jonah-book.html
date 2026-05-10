@@ -311,11 +311,9 @@ body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
 
 <div class="print-help" id="printHelp">
   <button class="close" id="printHelpClose" aria-label="Close">×</button>
-  <h4>Print + bind</h4>
-  <p><strong>1.</strong> Print on cardstock — 9 pages, single-sided, color, no margins.</p>
-  <p><strong>2.</strong> Stack in order (cover on top).</p>
-  <p><strong>3.</strong> Bind: hole-punch + binder rings (durable for a baby), or take to FedEx Office / Staples for $10 saddle-stitch.</p>
-  <p><strong>4.</strong> Optional: laminate each page first for chew-proof board-book feel.</p>
+  <h4>Print options</h4>
+  <p><strong>Real board book →</strong> use the dedicated <a href="jonah-book-print.html" style="color: #fff; border-bottom: 1px solid rgba(255,255,255,0.4); text-decoration: none">7×7 board-book export</a> (formatted for Pint Size Productions and similar printers, with full bleed).</p>
+  <p><strong>DIY at home →</strong> print on cardstock from this page, 9 sheets, single-sided. Stack, hole-punch, bind with rings. Optional: laminate first.</p>
   <p style="margin-top: .75em; opacity: .55"><em>In your browser's print dialog: enable "Background graphics" so black pages print black.</em></p>
 </div>
 
@@ -331,7 +329,7 @@ body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
       </svg>
     </div>
     <h1>For Jonah</h1>
-    <div class="page-sub">A book about your first trip</div>
+    <div class="page-sub">A book about your first time in the mountains</div>
     <div class="page-meta">Seven places · May–June 2026</div>
   </section>
 
@@ -446,46 +444,53 @@ body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
     </div>
   </section>
 
-  <!-- 06 · REDSTONE — CABIN + STARS -->
+  <!-- 06 · REDSTONE — HORSE -->
   <section class="page" data-i="6">
     <div class="loc"><span class="num">Base 06</span>Redstone</div>
     <div class="page-art">
       <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-        <!-- stars -->
         <g fill="#FFFFFF">
-          <circle cx="40"  cy="30" r="2"/>
-          <circle cx="90"  cy="55" r="2.5"/>
-          <circle cx="130" cy="20" r="1.8"/>
-          <circle cx="170" cy="70" r="2"/>
-          <circle cx="270" cy="35" r="2.5"/>
-          <circle cx="320" cy="65" r="2"/>
-          <circle cx="380" cy="25" r="2.5"/>
-          <!-- bigger star -->
-          <path d="M 60 80 L 64 92 L 76 96 L 64 100 L 60 112 L 56 100 L 44 96 L 56 92 Z"/>
+          <!-- Tail -->
+          <path d="M 125 115 Q 92 130 92 165 Q 108 156 117 140 Q 128 130 138 125 Z"/>
+          <!-- Body -->
+          <ellipse cx="205" cy="130" rx="78" ry="30"/>
+          <!-- Neck and head -->
+          <path d="M 263 132
+                   Q 267 110 280 92
+                   L 300 68
+                   Q 309 58 322 62
+                   Q 334 67 332 82
+                   L 324 94
+                   Q 320 98 314 98
+                   L 306 102
+                   Q 298 118 288 130 Z"/>
+          <!-- Mane along neck -->
+          <path d="M 263 105 Q 257 125 262 145 L 270 145 Q 276 125 277 100 Z"/>
+          <!-- Forelock between ears -->
+          <path d="M 308 60 Q 312 50 320 56 L 315 66 Z"/>
+          <!-- Ear -->
+          <polygon points="296,68 300,50 306,66"/>
+          <!-- 4 legs -->
+          <rect x="148" y="155" width="13" height="40"/>
+          <rect x="173" y="155" width="13" height="40"/>
+          <rect x="220" y="155" width="13" height="40"/>
+          <rect x="245" y="155" width="13" height="40"/>
+          <!-- Hooves flared -->
+          <rect x="146" y="191" width="17" height="5"/>
+          <rect x="171" y="191" width="17" height="5"/>
+          <rect x="218" y="191" width="17" height="5"/>
+          <rect x="243" y="191" width="17" height="5"/>
         </g>
-        <!-- moon -->
-        <circle cx="350" cy="40" r="14" fill="#FFFFFF"/>
-        <circle cx="343" cy="36" r="13" fill="#000000"/>
-        <!-- cabin -->
-        <g fill="#FFFFFF">
-          <polygon points="160,140 200,100 240,140"/>
-          <rect x="160" y="140" width="80" height="58"/>
-          <rect x="220" y="105" width="10" height="30"/>
-        </g>
-        <rect x="190" y="170" width="20" height="28" fill="#000000"/>
-        <rect x="170" y="155" width="14" height="14" fill="#000000"/>
-        <!-- chimney smoke -->
-        <circle cx="225" cy="92" r="6" fill="#FFFFFF" opacity="0.7"/>
-        <circle cx="232" cy="78" r="5" fill="#FFFFFF" opacity="0.5"/>
-        <circle cx="240" cy="65" r="4" fill="#FFFFFF" opacity="0.3"/>
-        <!-- ground -->
-        <rect x="0" y="198" width="400" height="22" fill="#FFFFFF" opacity="0.35"/>
+        <!-- Eye -->
+        <circle cx="318" cy="80" r="2.5" fill="#000000"/>
+        <!-- Ground line -->
+        <rect x="0" y="198" width="400" height="3" fill="#FFFFFF" opacity="0.4"/>
       </svg>
     </div>
-    <div class="page-text">A little cabin.</div>
+    <div class="page-text">A horse.</div>
     <div class="page-narrative">
-      <p>Smoke curled from the chimney. The stars came out, one by one. The hot tub bubbled warm.</p>
-      <p class="closer">Jonah was cozy and close to Mommy.</p>
+      <p>She stood quiet in the meadow. Her tail went swish, swish. Her ears went up at the wind.</p>
+      <p class="closer">Jonah heard her hoof go tap.</p>
     </div>
   </section>
 

@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jonah's Book · Board-Book Print · 7×7 in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@600;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #FFFFFF;
+  --paper: #000000;
+  --red: #E63946;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #222; color: #ddd; font-family: 'Inter', sans-serif; }
+
+/* INSTRUCTIONS / EXPORT UI (screen only) */
+.intro {
+  max-width: 720px;
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 8px;
+}
+.intro h1 { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 500; margin-bottom: .5rem; color: #fff; }
+.intro p { line-height: 1.55; margin-bottom: .9rem; font-size: .92rem; color: #c4c4c4; }
+.intro ol { padding-left: 1.4rem; margin-bottom: 1rem; font-size: .92rem; color: #c4c4c4; }
+.intro li { margin: .3rem 0; line-height: 1.5; }
+.intro strong { color: #fff; font-weight: 600; }
+.intro code { font-family: 'JetBrains Mono', ui-monospace, monospace; background: #2a2a2a; padding: 1px 6px; border-radius: 3px; font-size: .85em; }
+.intro .specs { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem 1rem; margin: .75rem 0; padding: .75rem 1rem; background: #111; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: .78rem; }
+.intro .specs span:nth-child(odd) { color: #888; }
+.intro .specs span:nth-child(even) { color: #fff; }
+.intro button {
+  background: #E63946; color: #fff; border: 0; padding: .65rem 1.2rem;
+  border-radius: 6px; font-family: 'Inter', sans-serif; font-weight: 700;
+  font-size: .85rem; letter-spacing: .04em; text-transform: uppercase;
+  cursor: pointer; transition: background .15s; margin-right: .5rem;
+}
+.intro button:hover { background: #f04a5b; }
+.intro a.back { color: #aaa; text-decoration: none; font-size: .85rem; border-bottom: 1px dotted #555; }
+.intro a.back:hover { color: #fff; }
+
+/* PAGE FRAME (screen preview) */
+.pages-wrap { padding: 1rem 0 4rem; }
+.board-page {
+  width: 7.25in;
+  height: 7.25in;
+  margin: 1rem auto;
+  background: var(--paper);
+  color: var(--ink);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5in;
+  box-shadow: 0 6px 30px rgba(0,0,0,.4);
+  page-break-after: always;
+}
+.board-page.page-red { background: var(--red); }
+
+/* Page elements */
+.loc {
+  position: absolute;
+  top: 0.4in;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 26pt;
+  letter-spacing: -0.015em;
+  color: rgba(255,255,255,1);
+  line-height: 1.05;
+  white-space: nowrap;
+}
+.loc .num {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 9pt;
+  letter-spacing: .38em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: .4em;
+}
+.page-red .loc { color: #fff; }
+.page-red .loc .num { color: rgba(255,255,255,0.85); }
+
+.page-art {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 3.2in;
+  margin-top: 0.6in;
+}
+.page-art svg { width: 75%; max-width: 4.5in; height: 100%; }
+
+.page-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 38pt;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-align: center;
+  margin-top: 0.25in;
+}
+.page-narrative {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 13pt;
+  line-height: 1.55;
+  margin-top: 0.18in;
+  opacity: 0.78;
+  max-width: 5.5in;
+  text-align: center;
+}
+.page-narrative p { margin: 0 0 .35em; }
+.page-narrative p:last-child { margin: 0; }
+.page-narrative .closer { display: block; opacity: 0.95; font-weight: 500; }
+
+/* COVER specific */
+.board-cover { padding: 0.75in 0.5in; }
+.board-cover .cover-art {
+  width: 75%;
+  max-width: 4in;
+  margin-bottom: 0.3in;
+}
+.board-cover h1 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 60pt;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin: 0 0 0.15in;
+}
+.board-cover .cover-sub {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: 14pt;
+  line-height: 1.3;
+  opacity: 0.82;
+  max-width: 5in;
+  text-align: center;
+  margin-bottom: 0.25in;
+}
+.board-cover .cover-meta {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 9pt;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+/* Bleed indicators (on screen only) */
+.bleed-line {
+  position: absolute;
+  border: 1px dashed rgba(255,255,255,0.18);
+  pointer-events: none;
+  inset: 0.125in;
+}
+
+/* PRINT CSS — the real export */
+@media print {
+  @page {
+    size: 7.25in 7.25in;
+    margin: 0;
+  }
+  html, body {
+    background: #000;
+    margin: 0; padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+  .intro, .bleed-line { display: none !important; }
+  .pages-wrap { padding: 0; }
+  .board-page {
+    margin: 0 !important;
+    box-shadow: none !important;
+    width: 7.25in;
+    height: 7.25in;
+    page-break-after: always;
+    page-break-inside: avoid;
+  }
+  .board-page:last-child { page-break-after: auto; }
+}
+</style>
+</head>
+<body>
+
+<div class="intro">
+  <h1>Board-book export for Pint Size Productions</h1>
+  <p>This file lays out Jonah's book at <strong>7×7 inch</strong> trim with <strong>0.125 inch full bleed</strong> on each side (total canvas 7.25×7.25 in) — the standard for board book printing. Black and red backgrounds extend to the bleed edge so colors run to the trim line cleanly.</p>
+
+  <div class="specs">
+    <span>Trim size</span><span>7 × 7 in</span>
+    <span>Canvas (w/ bleed)</span><span>7.25 × 7.25 in</span>
+    <span>Bleed</span><span>0.125 in per side</span>
+    <span>Pages</span><span>9 (cover + 7 + ending)</span>
+    <span>Resolution</span><span>vector — exports at any DPI</span>
+    <span>Color profile</span><span>sRGB</span>
+  </div>
+
+  <p><strong>To export:</strong></p>
+  <ol>
+    <li>Click <strong>Save as PDF</strong> below (or use your browser's Print → Save as PDF).</li>
+    <li>In the print dialog: <strong>enable "Background graphics"</strong> (Chrome) or "Print backgrounds" (Safari) — the black pages will print white without it.</li>
+    <li>Set <strong>margins to "None"</strong> and <strong>scale to 100%</strong>.</li>
+    <li>Confirm paper size is <strong>7.25 × 7.25 in custom</strong> — or any "fit" option that doesn't crop.</li>
+    <li>Upload the resulting PDF to <a href="https://pintsizeproductions.com" target="_blank" style="color:#fff">Pint Size Productions</a> (or any board-book printer).</li>
+  </ol>
+
+  <p style="font-size: .85rem; opacity: .7; margin-top: .9rem"><strong>Pint Size note:</strong> their standard book may require a minimum number of pages (often 12 or 16). If yours requires more than 9, you can repeat the cover page, add a blank "for Jonah" inscription page at the start, or repeat the goodnight page as a back-inside cover. Confirm their template requirements directly — they sometimes provide a downloadable PSD/PDF template that overrides these defaults.</p>
+
+  <button onclick="window.print()">Save as PDF</button>
+  <a class="back" href="jonah-book.html">← Back to the screen version</a>
+</div>
+
+<div class="pages-wrap">
+
+  <!-- COVER -->
+  <article class="board-page board-cover">
+    <div class="bleed-line"></div>
+    <svg class="cover-art" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="320" cy="80" r="34" fill="#E63946"/>
+      <polygon points="0,200 80,80 130,130 200,40 270,110 340,70 400,140 400,200" fill="#FFFFFF"/>
+      <circle cx="60" cy="50" r="6" fill="#FFFFFF"/>
+    </svg>
+    <h1>For Jonah</h1>
+    <div class="cover-sub">A book about your first time in the mountains</div>
+    <div class="cover-meta">Seven places · May–June 2026</div>
+  </article>
+
+  <!-- 01 · COLORADO SPRINGS — HAWK -->
+  <article class="board-page">
+    <div class="bleed-line"></div>
+    <div class="loc"><span class="num">Base 01</span>Colorado Springs</div>
+    <div class="page-art">
+      <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 200 120
+                 C 160 80, 80 70, 30 100
+                 C 80 105, 120 115, 160 125
+                 L 160 130 L 130 145 L 165 140 L 175 160
+                 L 200 145 L 225 160 L 235 140 L 270 145
+                 L 240 130 L 240 125
+                 C 280 115, 320 105, 370 100
+                 C 320 70, 240 80, 200 120 Z"
+              fill="#FFFFFF"/>
+        <circle cx="200" cy="120" r="3" fill="#000000"/>
+      </svg>
+    </div>
+    <div class="page-text">A hawk!</div>
+    <div class="page-narrative">
+      <p>She landed on Mommy's glove while you took a nap. Her wings were wide. Her eyes were sharp.</p>
+      <p class="closer">Mommy told you all about her.</p>
+    </div>
+  </article>
+
+  <!-- 02 · SALIDA — RIVER -->
+  <article class="board-page">
+    <div class="bleed-line"></div>
+    <div class="loc"><span class="num">Base 02</span>Salida</div>
+    <div class="page-art">
+      <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,60 Q50,40 100,60 T200,60 T300,60 T400,60" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+        <path d="M0,100 Q60,80 120,100 T240,100 T360,100 T420,100" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+        <path d="M0,140 Q40,120 80,140 T160,140 T240,140 T320,140 T400,140" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+        <path d="M0,180 Q50,160 100,180 T200,180 T300,180 T400,180" fill="none" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="page-text">The river.</div>
+    <div class="page-narrative">
+      <p>Whoosh, whoosh — the water ran cold and fast right through the middle of town.</p>
+      <p class="closer">Jonah watched the boats go by.</p>
+    </div>
+  </article>
+
+  <!-- 03 · PAGOSA — SPLASH (red) -->
+  <article class="board-page page-red">
+    <div class="bleed-line"></div>
+    <div class="loc"><span class="num">Base 03</span>Pagosa Springs</div>
+    <div class="page-art">
+      <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="110" r="100" fill="none" stroke="#FFFFFF" stroke-width="6"/>
+        <circle cx="200" cy="110" r="70"  fill="none" stroke="#FFFFFF" stroke-width="6"/>
+        <circle cx="200" cy="110" r="40"  fill="none" stroke="#FFFFFF" stroke-width="6"/>
+        <circle cx="200" cy="110" r="14"  fill="#FFFFFF"/>
+      </svg>
+    </div>
+    <div class="page-text">Splash!</div>
+    <div class="page-narrative">
+      <p>The hot springs were warm and steamy. Mommy dipped Jonah's little toes in the water.</p>
+      <p class="closer">Jonah smiled.</p>
+    </div>
+  </article>
+
+  <!-- 04 · DURANGO — TRAIN -->
+  <article class="board-page">
+    <div class="bleed-line"></div>
+    <div class="loc"><span class="num">Base 04</span>Durango</div>
+    <div class="page-art">
+      <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+        <rect x="40" y="100" width="180" height="60" fill="#FFFFFF"/>
+        <rect x="170" y="70" width="60" height="40" fill="#FFFFFF"/>
+        <rect x="80" y="60" width="20" height="50" fill="#FFFFFF"/>
+        <circle cx="90" cy="40" r="14" fill="#FFFFFF" opacity="0.85"/>
+        <circle cx="115" cy="22" r="10" fill="#FFFFFF" opacity="0.65"/>
+        <circle cx="140" cy="35" r="8" fill="#FFFFFF" opacity="0.45"/>
+        <circle cx="80"  cy="170" r="20" fill="#FFFFFF"/>
+        <circle cx="80"  cy="170" r="6"  fill="#000000"/>
+        <circle cx="140" cy="170" r="20" fill="#FFFFFF"/>
+        <circle cx="140" cy="170" r="6"  fill="#000000"/>
+        <circle cx="200" cy="170" r="20" fill="#FFFFFF"/>
+        <circle cx="200" cy="170" r="6"  fill="#000000"/>
+        <circle cx="50" cy="130" r="10" fill="#E63946"/>
+        <rect x="0" y="195" width="400" height="3" fill="#FFFFFF"/>
+        <rect x="0" y="200" width="400" height="3" fill="#FFFFFF"/>
+      </svg>
+    </div>
+    <div class="page-text">Choo-choo.</div>
+    <div class="page-narrative">
+      <p>The big black train rolled slowly down the track, puffing white smoke into the tall pine trees.</p>
+      <p class="closer">Jonah heard the whistle blow.</p>
+    </div>
+  </article>
+
+  <!-- 05 · RIDGWAY — MOUNTAINS -->
+  <article class="board-page">
+    <div class="bleed-line"></div>
+    <div class="loc"><span class="num">Base 05</span>Ridgway &amp; Ouray</div>
+    <div class="page-art">
+      <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="40,220 130,40 220,220" fill="#FFFFFF"/>
+        <polygon points="160,220 250,80 340,220" fill="#FFFFFF"/>
+        <polygon points="240,220 320,120 400,220" fill="#FFFFFF"/>
+        <polygon points="0,220 60,140 120,220" fill="#FFFFFF" opacity="0.6"/>
+        <polygon points="115,75 130,40 145,75 138,72 130,55 122,72" fill="#000000"/>
+        <polygon points="240,110 250,80 260,110 256,108 250,95 244,108" fill="#000000"/>
+      </svg>
+    </div>
+    <div class="page-text">Mountains.</div>
+    <div class="page-narrative">
+      <p>Tall, tall mountains stood all around. Snow on top. Green below. Big blue sky above.</p>
+      <p class="closer">Jonah looked up, and up, and up.</p>
+    </div>
+  </article>
+
+  <!-- 06 · REDSTONE — HORSE -->
+  <article class="board-page">
+    <div class="bleed-line"></div>
+    <div class="loc"><span class="num">Base 06</span>Redstone</div>
+    <div class="page-art">
+      <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#FFFFFF">
+          <path d="M 125 115 Q 92 130 92 165 Q 108 156 117 140 Q 128 130 138 125 Z"/>
+          <ellipse cx="205" cy="130" rx="78" ry="30"/>
+          <path d="M 263 132 Q 267 110 280 92 L 300 68 Q 309 58 322 62 Q 334 67 332 82 L 324 94 Q 320 98 314 98 L 306 102 Q 298 118 288 130 Z"/>
+          <path d="M 263 105 Q 257 125 262 145 L 270 145 Q 276 125 277 100 Z"/>
+          <path d="M 308 60 Q 312 50 320 56 L 315 66 Z"/>
+          <polygon points="296,68 300,50 306,66"/>
+          <rect x="148" y="155" width="13" height="40"/>
+          <rect x="173" y="155" width="13" height="40"/>
+          <rect x="220" y="155" width="13" height="40"/>
+          <rect x="245" y="155" width="13" height="40"/>
+          <rect x="146" y="191" width="17" height="5"/>
+          <rect x="171" y="191" width="17" height="5"/>
+          <rect x="218" y="191" width="17" height="5"/>
+          <rect x="243" y="191" width="17" height="5"/>
+        </g>
+        <circle cx="318" cy="80" r="2.5" fill="#000000"/>
+        <rect x="0" y="198" width="400" height="3" fill="#FFFFFF" opacity="0.4"/>
+      </svg>
+    </div>
+    <div class="page-text">A horse.</div>
+    <div class="page-narrative">
+      <p>She stood quiet in the meadow. Her tail went swish, swish. Her ears went up at the wind.</p>
+      <p class="closer">Jonah heard her hoof go tap.</p>
+    </div>
+  </article>
+
+  <!-- 07 · CARBONDALE — BIKE WHEEL -->
+  <article class="board-page">
+    <div class="bleed-line"></div>
+    <div class="loc"><span class="num">Base 07</span>Carbondale</div>
+    <div class="page-art">
+      <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="110" r="80" fill="none" stroke="#FFFFFF" stroke-width="10"/>
+        <circle cx="200" cy="110" r="14" fill="#FFFFFF"/>
+        <circle cx="200" cy="110" r="5"  fill="#000000"/>
+        <line x1="200" y1="36"  x2="200" y2="184" stroke="#FFFFFF" stroke-width="3"/>
+        <line x1="126" y1="110" x2="274" y2="110" stroke="#FFFFFF" stroke-width="3"/>
+        <line x1="148" y1="58"  x2="252" y2="162" stroke="#FFFFFF" stroke-width="3"/>
+        <line x1="252" y1="58"  x2="148" y2="162" stroke="#FFFFFF" stroke-width="3"/>
+      </svg>
+    </div>
+    <div class="page-text">Round and round.</div>
+    <div class="page-narrative">
+      <p>Daddy's bike spun up the empty mountain road. The sky turned pink behind the peaks.</p>
+      <p class="closer">Jonah waited for Daddy to come home.</p>
+    </div>
+  </article>
+
+  <!-- GOODNIGHT -->
+  <article class="board-page">
+    <div class="bleed-line"></div>
+    <div class="loc"><span class="num">The end</span>Goodnight</div>
+    <div class="page-art">
+      <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="105" r="70" fill="#FFFFFF"/>
+        <circle cx="180" cy="95"  r="65" fill="#000000"/>
+        <text x="270" y="65" font-family="Fraunces, serif" font-style="italic" font-weight="600" font-size="44" fill="#FFFFFF">z</text>
+        <text x="305" y="50" font-family="Fraunces, serif" font-style="italic" font-weight="600" font-size="32" fill="#FFFFFF">z</text>
+        <text x="332" y="38" font-family="Fraunces, serif" font-style="italic" font-weight="600" font-size="22" fill="#FFFFFF">z</text>
+      </svg>
+    </div>
+    <div class="page-text">Goodnight, Jonah.</div>
+    <div class="page-narrative">
+      <p>The moon came up over the mountains. The trip was over. You were small, and we held you a lot.</p>
+      <p class="closer">Goodnight, little traveler. We love you.</p>
+    </div>
+  </article>
+
+</div>
+
+</body>
+</html>
