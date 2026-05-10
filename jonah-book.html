@@ -200,9 +200,9 @@ body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
 .nav-arrow.right { right: 2vh; }
 .nav-arrow.disabled { opacity: 0.2; pointer-events: none; }
 
-.home-link {
+.home-link, .print-btn {
   position: fixed;
-  top: 2vh; left: 2vh;
+  top: 2vh;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: .7rem;
@@ -215,23 +215,74 @@ body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
   border-radius: 100px;
   z-index: 50;
   transition: color .15s, border-color .15s;
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
 }
-.home-link:hover { color: var(--ink); border-color: rgba(255,255,255,0.5); }
+.home-link { left: 2vh; }
+.print-btn { right: 2vh; }
+.home-link:hover, .print-btn:hover { color: var(--ink); border-color: rgba(255,255,255,0.5); }
+
+.print-help {
+  position: fixed;
+  bottom: 2vh; right: 2vh;
+  max-width: 280px;
+  background: rgba(20,20,20,0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(255,255,255,0.85);
+  padding: 1rem 1.15rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  font-family: 'Inter', sans-serif;
+  font-size: .72rem;
+  line-height: 1.5;
+  z-index: 49;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .2s, transform .2s;
+  pointer-events: none;
+}
+.print-help.open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.print-help h4 { font-family: 'Inter', sans-serif; font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin: 0 0 .5rem; font-weight: 700; }
+.print-help p { margin: 0 0 .5em; }
+.print-help p:last-child { margin-bottom: 0; }
+.print-help .close { position: absolute; top: 6px; right: 8px; color: rgba(255,255,255,0.4); cursor: pointer; font-size: 1rem; background: transparent; border: 0; }
+.print-help .close:hover { color: white; }
 
 @media print {
-  @page { size: letter; margin: 0.4in; }
-  body { background: white; color: black; }
-  .book { display: block; height: auto; overflow: visible; }
+  @page { size: letter; margin: 0; }
+  html, body {
+    background: #000000;
+    color: #FFFFFF;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+  .book { display: block; height: auto; overflow: visible; width: 100%; }
   .page {
     page-break-after: always;
-    width: 100%;
-    height: 10in;
+    page-break-inside: avoid;
+    width: 8.5in;
+    height: 10.95in;
     flex: none;
-    background: white;
-    color: black;
+    background: #000000;
+    color: #FFFFFF;
+    padding: 0.55in 0.6in;
+    overflow: hidden;
   }
-  .page-red { background: #E63946; color: white; }
-  .nav-arrow, .home-link, .indicator { display: none; }
+  .page-red { background: #E63946 !important; color: #FFFFFF !important; }
+  .page-red .loc { color: #FFFFFF !important; }
+  .page-art { max-height: 4.5in; }
+  .page-art svg { max-width: 5.5in; width: 80%; }
+  .page-text { font-size: 44pt; }
+  .page-narrative { font-size: 14pt; max-width: 6in; }
+  .page-cover h1 { font-size: 56pt; }
+  .page-cover .page-sub { font-size: 10pt; }
+  .page-cover .page-meta { font-size: 9pt; }
+  .loc { top: 0.5in; font-size: 18pt; }
+  .loc .num { font-size: 8pt; letter-spacing: .35em; }
+  .nav-arrow, .home-link, .indicator, .tap-hint, .print-help { display: none !important; }
 }
 
 .tap-hint {
@@ -255,6 +306,17 @@ body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
 <body>
 
 <a href="colorado-trip.html" class="home-link">← Trip</a>
+<button class="print-btn" id="printBtn" aria-label="Print and bind">Print</button>
+
+<div class="print-help" id="printHelp">
+  <button class="close" id="printHelpClose" aria-label="Close">×</button>
+  <h4>Print + bind</h4>
+  <p><strong>1.</strong> Print on cardstock — 9 pages, single-sided, color, no margins.</p>
+  <p><strong>2.</strong> Stack in order (cover on top).</p>
+  <p><strong>3.</strong> Bind: hole-punch + binder rings (durable for a baby), or take to FedEx Office / Staples for $10 saddle-stitch.</p>
+  <p><strong>4.</strong> Optional: laminate each page first for chew-proof board-book feel.</p>
+  <p style="margin-top: .75em; opacity: .55"><em>In your browser's print dialog: enable "Background graphics" so black pages print black.</em></p>
+</div>
 
 <div class="book" id="book" tabindex="0">
 
@@ -526,6 +588,26 @@ pages.forEach(p => {
 });
 
 window.addEventListener('resize', () => goto(getCurrentIndex()));
+
+// PRINT
+const printBtn = document.getElementById('printBtn');
+const printHelp = document.getElementById('printHelp');
+const printHelpClose = document.getElementById('printHelpClose');
+let printHelpShown = false;
+printBtn.addEventListener('click', () => {
+  if (!printHelpShown) {
+    printHelp.classList.add('open');
+    printHelpShown = true;
+    printBtn.textContent = 'Print now';
+  } else {
+    window.print();
+  }
+});
+printHelpClose.addEventListener('click', () => {
+  printHelp.classList.remove('open');
+  printHelpShown = false;
+  printBtn.textContent = 'Print';
+});
 </script>
 </body>
 </html>
