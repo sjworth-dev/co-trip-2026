@@ -65,9 +65,9 @@ US-24 west through Woodland Park → Hartsel → Buena Vista → Salida (continu
 - Wander **F Street** — galleries, **Howl Mercantile**, **Bongo Billy's** for coffee.
 - Settle in; dinner downtown.
 
-**Day 2 — River day (Wed May 27):**
-- Morning: **half-day rafting on Brown's Canyon** (one parent at a time, Class III, 3–4h). Outfitters: **Wilderness Aware**, **Echo Canyon**, **RMOC**, **Browns Canyon Rafting**. Late-May = peak runoff, big-water window. Book the night before.
-- Or skip the raft and just **watch the F Street whitewater park** all morning.
+**Day 2 — River-watching + soak (Wed May 27):**
+- Morning: **F Street Whitewater Park** in town — sit on the bank or the bridge and watch kayakers and SUPers play the engineered waves. Late-May = peak runoff, biggest waves. Coffee from **Bongo Billy's**, locals bring camp chairs. The most quintessentially Salida thing you can do with a baby.
+- *Optional add:* drive ~20m north to **Hecla Junction Recreation Site** (a Brown's Canyon take-out) to watch commercial rafts come off the river. Big colorful pulses of rafts arriving — fun spectacle for Jonah.
 - Afternoon: **Mt. Princeton Hot Springs** (~30m north) — family pools, creek-side natural pools, kid-friendly.
   - *Alt:* **Cottonwood Hot Springs** — quieter, rustic, smaller pools.
 - Dinner: somewhere you didn't hit Day 1.
