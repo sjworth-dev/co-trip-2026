@@ -82,7 +82,7 @@ body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
   display: flex;
   align-items: center;
   justify-content: center;
-  max-height: 64vh;
+  max-height: 50vh;
 }
 .page-art svg { width: 90%; height: 100%; max-width: 600px; }
 
@@ -101,8 +101,27 @@ body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
   font-weight: 400;
   font-size: clamp(1rem, 2.5vw, 1.5rem);
   margin-top: 1rem;
-  opacity: 0.7;
+  opacity: 0.85;
   letter-spacing: 0;
+}
+.page-narrative {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(.95rem, 2.2vw, 1.3rem);
+  line-height: 1.55;
+  margin-top: .85rem;
+  opacity: 0.72;
+  max-width: 32em;
+  text-align: center;
+}
+.page-narrative p { margin: 0 0 .35em; }
+.page-narrative p:last-child { margin-bottom: 0; }
+.page-narrative .closer {
+  display: block;
+  margin-top: .35em;
+  opacity: 0.92;
+  font-weight: 500;
 }
 
 /* COVER */
@@ -271,7 +290,10 @@ body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
       </svg>
     </div>
     <div class="page-text">A hawk!</div>
-    <div class="page-sub">She landed on Daddy's glove.</div>
+    <div class="page-narrative">
+      <p>She landed on Daddy's glove. Her wings were wide. Her eyes were sharp.</p>
+      <p class="closer">Jonah looked, and looked, and looked.</p>
+    </div>
   </section>
 
   <!-- 02 · SALIDA — RIVER -->
@@ -287,7 +309,10 @@ body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
       </svg>
     </div>
     <div class="page-text">The river.</div>
-    <div class="page-sub">Whoosh — the water runs.</div>
+    <div class="page-narrative">
+      <p>Whoosh, whoosh — the water ran cold and fast right through the middle of town.</p>
+      <p class="closer">Jonah watched the boats go by.</p>
+    </div>
   </section>
 
   <!-- 03 · PAGOSA — SPLASH (red) -->
@@ -302,7 +327,10 @@ body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
       </svg>
     </div>
     <div class="page-text">Splash!</div>
-    <div class="page-sub">Warm water all around.</div>
+    <div class="page-narrative">
+      <p>The hot springs were warm and steamy. Mommy dipped Jonah's little toes in the water.</p>
+      <p class="closer">Jonah smiled.</p>
+    </div>
   </section>
 
   <!-- 04 · DURANGO — TRAIN -->
@@ -328,7 +356,10 @@ body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
       </svg>
     </div>
     <div class="page-text">Choo-choo.</div>
-    <div class="page-sub">The big black train.</div>
+    <div class="page-narrative">
+      <p>The big black train rolled slowly down the track, puffing white smoke into the tall pine trees.</p>
+      <p class="closer">Jonah heard the whistle blow.</p>
+    </div>
   </section>
 
   <!-- 05 · RIDGWAY — MOUNTAINS -->
@@ -346,7 +377,10 @@ body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
       </svg>
     </div>
     <div class="page-text">Mountains.</div>
-    <div class="page-sub">Tall, tall, all around.</div>
+    <div class="page-narrative">
+      <p>Tall, tall mountains stood all around. Snow on top. Green below. Big blue sky above.</p>
+      <p class="closer">Jonah looked up, and up, and up.</p>
+    </div>
   </section>
 
   <!-- 06 · REDSTONE — CABIN + STARS -->
@@ -385,8 +419,11 @@ body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
         <rect x="0" y="198" width="400" height="22" fill="#FFFFFF" opacity="0.35"/>
       </svg>
     </div>
-    <div class="page-text">A cabin.</div>
-    <div class="page-sub">Smoke, stars, and you.</div>
+    <div class="page-text">A little cabin.</div>
+    <div class="page-narrative">
+      <p>Smoke curled from the chimney. The stars came out, one by one. The hot tub bubbled warm.</p>
+      <p class="closer">Jonah was cozy and close to Mommy.</p>
+    </div>
   </section>
 
   <!-- 07 · CARBONDALE — BIKE WHEEL -->
@@ -404,7 +441,10 @@ body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
       </svg>
     </div>
     <div class="page-text">Round and round.</div>
-    <div class="page-sub">Daddy's bike at sunrise.</div>
+    <div class="page-narrative">
+      <p>Daddy's bike spun up the empty mountain road. The sky turned pink behind the peaks.</p>
+      <p class="closer">Jonah waited for Daddy to come home.</p>
+    </div>
   </section>
 
   <!-- GOODNIGHT -->
@@ -420,7 +460,10 @@ body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
       </svg>
     </div>
     <div class="page-text">Goodnight, Jonah.</div>
-    <div class="page-sub">We love you.</div>
+    <div class="page-narrative">
+      <p>The moon came up over the mountains. The trip was over. You were small, and we held you a lot.</p>
+      <p class="closer">Goodnight, little traveler. We love you.</p>
+    </div>
   </section>
 
 </div>
