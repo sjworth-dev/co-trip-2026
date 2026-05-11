@@ -13,15 +13,16 @@
 | # | Nights | Dates | Base | Elev | Drive in |
 |---|---|---|---|---|---|
 | 1 | 2 | May 24–25 (Sun–Mon) | Colorado Springs — Broadmoor | 6,000 ft | 1h 30m from DEN |
-| 2 | 2 | May 26–27 (Tue–Wed) | Salida | 7,083 ft | 2h 45m |
-| 3 | 1 | May 28 (Thu) | Pagosa Springs | 7,100 ft | 3h via Wolf Creek Pass |
-| 4 | 3 | May 29–31 (Fri–Sun) | Durango | 6,500 ft | 1h |
-| 5 | 4 | Jun 1–4 (Mon–Thu) | Ridgway / Ouray | 7,000 / 7,800 ft | 3h via Million Dollar Hwy |
-| 6 | 1 | Jun 5 (Fri) | Redstone / Marble | 6,800 ft | 4h via Hwy 92 + McClure Pass |
-| 7 | 2 | Jun 6–7 (Sat–Sun) | Carbondale | 6,180 ft | 50m |
+| 2 | 1 | May 26 (Tue) | Salida | 7,083 ft | 2h 45m |
+| 3 | 1 | May 27 (Wed) | Pagosa Springs | 7,100 ft | 3h via Wolf Creek Pass |
+| 4 | 3 | May 28–30 (Thu–Sat) | Durango | 6,500 ft | 1h |
+| 5 | 3 | May 31–Jun 2 (Sun–Tue) | Ridgway / Ouray | 7,000 / 7,800 ft | 3h via Million Dollar Hwy |
+| 6 | 2 | Jun 3–4 (Wed–Thu) | Palisade | 4,720 ft | 2h 30m via Hwy 50 (mostly off I-70) |
+| 7 | 1 | Jun 5 (Fri) | Redstone / Marble | 6,800 ft | 3h 30m via Grand Mesa Scenic Byway |
+| 8 | 2 | Jun 6–7 (Sat–Sun) | Carbondale | 6,180 ft | 50m |
 | — | — | Jun 8 | Carbondale → DEN (Indep Pass scenic ~4.5h, or I-70 direct ~3h) | — | — |
 
-**Total driving:** ~18 hours over 15 days. Longest legs: Ouray → Redstone (4h, scenic) and Durango → Ridgway via Million Dollar Hwy (3h, also scenic).
+**Total driving:** ~19 hours over 15 days. Three signature scenic drives: Durango → Ridgway via **Million Dollar Hwy** (3h), Palisade → Redstone via **Grand Mesa Scenic Byway** (3.5h), and Wolf Creek Pass into Pagosa (3h).
 
 ---
 
@@ -56,33 +57,28 @@ US-24 west through Woodland Park → Hartsel → Buena Vista → Salida (continu
 
 **Stops:** Coffee in Manitou Springs on the way out; pull over at **Wilkerson Pass** for the Collegiate Peaks panorama.
 
-## Base 2 — Salida (Tue–Wed May 26–27, 2 nights)
+## Base 2 — Salida (Tue May 26, 1 night)
 
 **Lodging:** Downtown hotel near the river — TBD. Looking for something walkable to F Street, the Riverwalk, and the Arkansas. Candidates: **The Palace Hotel** (historic boutique downtown), **Hotel Andrea** (boutique), riverfront Airbnb on F Street.
 
-**Day 1 — Arrive (Tue May 26):**
-- Walk **Salida Riverwalk + Riverside Park** — the Arkansas runs right through downtown; whitewater play park (kayakers and SUPers playing the engineered waves; locals bring chairs).
+**Afternoon/evening:**
+- Walk **Salida Riverwalk + Riverside Park** — Arkansas runs through downtown; whitewater play park (kayakers and SUPers playing the engineered waves; locals bring chairs).
 - Wander **F Street** — galleries, **Howl Mercantile**, **Bongo Billy's** for coffee.
-- Settle in; dinner downtown.
+- *Optional brief detour ~20m north:* **Hecla Junction Recreation Site** (a Brown's Canyon raft take-out) to watch rafts come off the river.
 
-**Day 2 — River-watching + soak (Wed May 27):**
-- Morning: **F Street Whitewater Park** in town — sit on the bank or the bridge and watch kayakers and SUPers play the engineered waves. Late-May = peak runoff, biggest waves. Coffee from **Bongo Billy's**, locals bring camp chairs. The most quintessentially Salida thing you can do with a baby.
-- *Optional add:* drive ~20m north to **Hecla Junction Recreation Site** (a Brown's Canyon take-out) to watch commercial rafts come off the river. Big colorful pulses of rafts arriving — fun spectacle for Jonah.
-- Afternoon: **Mt. Princeton Hot Springs** (~30m north) — family pools, creek-side natural pools, kid-friendly.
-  - *Alt:* **Cottonwood Hot Springs** — quieter, rustic, smaller pools.
-- Dinner: somewhere you didn't hit Day 1.
+**Dinner:** **The Asian Palate** (the destination meal — reservations), **Currents** (riverside), or **Amica's Pizza** (casual patio).
 
-**Restaurants over both nights:** **The Asian Palate** (the destination meal — reservations), **Currents** (riverside, fancier), **Amica's Pizza** (casual patio), **Eddyline Brewery** (sister to BV).
+*Skip Mt. Princeton on the way in — you'll soak in Pagosa tomorrow. Or stop briefly on the morning drive south if you want.*
 
 ---
 
-## Drive 2 — Salida → Pagosa Springs (Thu May 28)
+## Drive 2 — Salida → Pagosa Springs (Wed May 27)
 
-Optional morning soak at **Mt. Princeton** before pushing on. Then Hwy 285 south from Poncha Springs → Saguache → Del Norte → Wolf Creek Pass → Pagosa. ~3h from Salida. **One of the great Colorado drives** — San Luis Valley flats then the Wolf Creek climb with waterfall pull-offs.
+Hwy 285 south from Poncha Springs → Saguache → Del Norte → Wolf Creek Pass → Pagosa. ~3h. **One of the great Colorado drives** — San Luis Valley flats then the Wolf Creek climb with waterfall pull-offs.
 
 **Lunch stop:** **Three Barrel Brewing** in Del Norte (or grab tamales in Antonito if you go that way).
 
-## Base 3 — Pagosa Springs (Thu May 28)
+## Base 3 — Pagosa Springs (Wed May 27)
 
 **Lodging target:** **The Springs Resort** (~$350) — on-property soaking terraces, kids welcome in lower pools. Book early.
 *Cheaper alt:* downtown Airbnb + a Springs day pass.
@@ -95,25 +91,25 @@ Optional morning soak at **Mt. Princeton** before pushing on. Then Hwy 285 south
 
 ---
 
-## Drive 3 — Pagosa → Durango (Fri May 29)
+## Drive 3 — Pagosa → Durango (Thu May 28)
 
 US-160 west, ~1h. Easy day. Stop at **Chimney Rock National Monument** if you want a 1-hour archaeology stop (walking the upper site requires a ranger tour — call ahead).
 
-## Base 4 — Durango (Fri–Sun May 29–31, 3 nights)
+## Base 4 — Durango (Thu–Sat May 28–30, 3 nights)
 
 **Lodging picks (rural-first):**
 - **Animas Valley Airbnb** — cabin or river-side house, ~10 min north of downtown along the Animas River. **Recommended for all 3 nights.** River sounds, mountain views, more space for Jonah's gear. Drive into town for dinners. Search "Animas Valley" or "Hermosa" on Airbnb.
 - *In-town alt:* **Rochester Hotel** — historic boutique downtown, ~$280. Pick this for one night if you want walk-to-dinner ease.
 - *Splurge:* General Palmer Hotel (Victorian).
 
-**Day 1 — Mesa Verde (Fri May 29):**
+**Day 1 — Mesa Verde (Thu May 28):**
 - Drive to **Mesa Verde NP** (~45m). Buy timed tickets in advance for the **Far View** sites and **Spruce Tree House** overlook (no ladders, carrier-OK).
 - Skip ranger-led ladder tours (Cliff Palace, Balcony House) — not infant-compatible.
 - Lunch at the Far View Lodge or pack one.
 - Lunch stop in **Mancos** (~900-person tiny town) at **Olio** or **Absolute Bakery** on the way back.
 - Back to Durango late afternoon.
 
-**Day 2 — Hike + chill (Sat May 30):**
+**Day 2 — Hike + chill (Fri May 29):**
 - Morning hike — pick one (carrier-friendly):
   - **Hermosa Creek Trail** — ~10 min north, riverside, low-altitude, pick any segment.
   - **Junction Creek / Colorado Trail start** — gentle ascent, turn around at will.
@@ -122,7 +118,7 @@ US-160 west, ~1h. Easy day. Stop at **Chimney Rock National Monument** if you wa
 - Afternoon: chill at the Animas Valley Airbnb. River walk, porch nap, slow rural day.
 - Dinner: cook in or **El Moro Tavern** in town.
 
-**Day 3 — Town + train (Sun May 31):**
+**Day 3 — Town + train (Sat May 30):**
 - Morning: **Durango–Silverton Train, half-day to Cascade Canyon** (~3.5h round trip — confirm off-season schedule). Skip if full-day Silverton train is too much for Jonah.
 - Alt morning: walk/bike the **Animas River Trail** — paved, 7+ mi. Rent bikes at **Pedal the Peaks**.
 - Late lunch wandering Main Ave.
@@ -132,7 +128,7 @@ US-160 west, ~1h. Easy day. Stop at **Chimney Rock National Monument** if you wa
 
 ---
 
-## Drive 4 — Durango → Ridgway via Million Dollar Highway (Mon Jun 1)
+## Drive 4 — Durango → Ridgway via Million Dollar Highway (Sun May 31)
 
 **The iconic San Juans drive.** ~3h, 110 mi. The move *is* the experience.
 
@@ -140,19 +136,19 @@ US-550 north → **Coal Bank Pass** (10,640 ft) → **Molas Pass** (10,910 ft, s
 
 This eliminates the need for a separate Million Dollar Highway day from Ridgway. Pace it leisurely — leave Durango by 9, lunch in Silverton, arrive Ridgway by mid-afternoon.
 
-## Base 5 — Ridgway / Ouray (Mon–Thu Jun 1–4, 4 nights)
+## Base 5 — Ridgway / Ouray (Sun–Tue May 31–Jun 2, 3 nights)
 
-**Lodging plan — split the 4 nights:**
-- **Nights 1–3 (Jun 1–3):** Airbnb cabin in Ridgway (Hartwell Park area or N of town with mountain views) — ~$200/night.
-- **Night 4 (Jun 4):** **Beaumont Hotel** in Ouray — Victorian splurge, ~$320.
+**Lodging plan — split the 3 nights:**
+- **Nights 1–2 (May 31, Jun 1):** Airbnb cabin in Ridgway (Hartwell Park area or N of town with mountain views) — ~$200/night.
+- **Night 3 (Jun 2):** **Beaumont Hotel** in Ouray — Victorian splurge, ~$320.
 
-**Day 1 — Settle + Ouray Hot Springs (Mon Jun 1):**
+**Day 1 — Settle + Ouray Hot Springs (Sun May 31):**
 - Arrive after the Million Dollar Hwy drive. Decompress.
 - Walk Ridgway's tiny downtown (Cimarron Books, True Grit Café — yes, that True Grit).
 - Late afternoon: **Ouray Hot Springs Pool** (10m south) — shallow family sections.
 - Dinner: **Maggie's Kitchen** in Ouray or **The Adobe Inn** in Ridgway.
 
-**Day 2 — Telluride day trip (the Dolomites moment) (Tue Jun 2):**
+**Day 2 — Telluride day trip (the Dolomites moment) (Mon Jun 1):**
 - Drive ~45m over **Dallas Divide** (one of the most photographed views in CO) to Telluride.
 - Ride the **free gondola** Telluride ↔ Mountain Village. *This is the Dolomites moment* — lunch at Allred's at the top if it's open (call to confirm; off-season).
 - Lunch in town: **Brown Dog Pizza**, **221 South Oak** (splurge), or **There** (Asian, casual).
@@ -160,21 +156,21 @@ This eliminates the need for a separate Million Dollar Highway day from Ridgway.
 - Optional drive partway to **Bridal Veil Falls**.
 - Back to Ridgway for low-altitude sleep.
 
-**Day 3 — Hiking day (Wed Jun 3):**
-Pick one based on energy and weather. All carrier-friendly options:
-- **Bear Creek Trail (Telluride)** — switchbacks up a dramatic canyon. Steep but the first 30–45 min are doable; views payoff fast. Drive 45m to Telluride trailhead in town.
-- **Yankee Boy Basin** — drive a 4WD/AWD road up from Ouray into a wildflower bowl; easy meadow walks at the top. Gorgeous.
+**Day 3 — Hike + Black Canyon (Tue Jun 2):**
+Combined day — morning hike, afternoon Black Canyon, then move to Beaumont in Ouray.
+
+*Morning hike — pick one (carrier-friendly):*
+- **Box Canyon + Cascade Falls combo (Ouray)** — quick wins, both 5-min walks, dramatic. Best low-effort option.
 - **Twin Peaks Trail (Ouray)** — moderate, ~3 mi RT, ~1,000 ft gain, big views back over town.
-- **Box Canyon + Cascade Falls combo (Ouray)** — quick wins, both 5-min walks, dramatic.
-- **Ridgway State Park lake trails** — flat, easy, family-friendly.
+- **Yankee Boy Basin** — drive 4WD/AWD up from Ouray into a wildflower bowl; easy meadow walks at the top.
 
-*Sam solo morning option:* **Blue Lakes Trail** — ~7 mi RT, 1,800 ft gain to the first lake. One of the most-photographed alpine lakes in CO. Gigi + Jonah do something easy meanwhile.
+*Sam solo dawn option:* **Blue Lakes Trail** — ~7 mi RT, 1,800 ft gain to the first lake. Get out by 6am to be back by 11. Gigi + Jonah do something easy meanwhile.
 
-**Day 4 — Black Canyon of the Gunnison + Owl Creek Pass (Thu Jun 4):**
-- Morning: drive ~50m to **Black Canyon south rim**. Drive the rim road, short stroller-OK overlook walks (Pulpit Rock, Sunset View, Painted Wall). Picnic lunch on the rim.
-- Afternoon: optional **Owl Creek Pass Road** dirt drive (east from Ridgway) — gravel, ranchland and aspens to a high pass with Cimarron Range views. Almost zero traffic.
-- Move to **Beaumont Hotel** in Ouray for a Victorian-splurge final night.
-- Dinner: **Bon Ton** at the St Elmo Hotel (Ouray, splurge).
+*Afternoon — Black Canyon of the Gunnison south rim:*
+- Drive ~50m to the rim. Short stroller-OK overlook walks (Pulpit Rock, Sunset View, Painted Wall). Picnic lunch on the rim.
+- *Optional:* **Owl Creek Pass Road** dirt drive on the way back — gravel, ranchland and aspens, almost zero traffic.
+
+*Evening:* Move to **Beaumont Hotel** in Ouray for a Victorian-splurge final night. Dinner: **Bon Ton** at the St Elmo Hotel.
 
 **Road bike option:** Ridgway → Colona → back, or the Uncompahgre Riverway path. Quiet shoulders early morning. Slot it on Day 1 evening or Day 3 morning if not hiking.
 
@@ -182,31 +178,65 @@ Pick one based on energy and weather. All carrier-friendly options:
 
 ---
 
-## Drive 5 — Ouray → Redstone (Fri Jun 5)
+## Drive 5 — Ouray → Palisade (Wed Jun 3)
 
-The scenic way: US-50 west to Montrose → Hwy 92 east along the **Black Canyon north rim** (Crawford → Hotchkiss) → through **Paonia** → Hwy 133 north over **McClure Pass** → into Redstone. ~4h.
+US-50 west through Montrose → Delta → Grand Junction → Palisade. ~2h 30m. Through Uncompahgre Valley orchard country, hitting I-70 only for the last 15 min into Palisade.
 
-This is the prettiest "transit" day of the trip. **Lunch in Paonia** (~1,400 people) at **Living Farm Café** or **Revolution Brewing** — bohemian orchard town, browse the fruit stands or hit a local winery (Stone Cottage Cellars, Black Bridge) if in season. Stop at **Black Canyon north rim overlook** if you didn't get enough on Day 3, and at **Paonia Reservoir** for a leg-stretch.
+**Stops:** Coffee in Delta, fruit stands along the way.
 
-## Base 6 — Redstone / Marble (Fri Jun 5)
+## Base 6 — Palisade (Wed–Thu Jun 3–4, 2 nights)
+
+**Why the warmth:** After 10 days of 50–70°F mountain mornings, Palisade is the deliberate weather break. Expect 85–90°F afternoons. Pool weather. Patio-dinner weather.
+
+**Lodging picks:**
+- **Wine Country Inn** — vineyard hotel with pool, ~$250–300. Top pick for hot weather with a baby.
+- **Spoke and Vine Motor Lodge** — boutique retro motel in town, walkable to tasting rooms.
+- Vineyard cabin Airbnb — search "Palisade" for orchard cottages.
+
+**Day 1 — Arrive + Colorado National Monument (Wed Jun 3):**
+- Arrive Palisade mid-afternoon. Check in, pool, recover from drive.
+- **Late afternoon:** drive 15 min to **Colorado National Monument**. Take **Rim Rock Drive** at golden hour — 23 miles of red-rock canyon overlooks (Independence Monument, Wedding Canyon, Book Cliffs). Stay in the car between viewpoints; Jonah in carrier or stroller for the short walks.
+- **Dinner:** **Pêche** at Hotel Maverick (Grand Junction, 15m west) or **Bin 707** for a wine-bar-style menu.
+
+**Day 2 — Wine + peach country (Thu Jun 4):**
+- Morning: **East Orchard Mesa Road** tasting tour. Visit **Carlson Vineyards**, **Whitewater Hill**, **Restoration Vineyards** — tasting rooms are AC, spit don't drink with baby.
+- Stop at fruit stands: **Talbott's Mountain Gold**, **Clark Family Orchards**. Cherries ripen in early June; peaches start in July. Bring a cooler.
+- **Lunch:** patio at a winery (try **Sauvage Spectrum** or **Talon**), or **Inari's** for sushi in Palisade.
+- Afternoon: pool, or **Riverbend Park** along the Colorado River for a paved stroller walk.
+- Dinner: vineyard tasting menu or back to GJ for **Bin 707**.
+
+---
+
+## Drive 6 — Palisade → Redstone via Grand Mesa Scenic Byway (Fri Jun 5)
+
+**The scenic alternative to I-70.** ~3h 30m, but it's one of CO's great drives.
+
+Route: Brief I-70 east → exit 49 → **Hwy 65 South** (Grand Mesa Scenic Byway) → up and over **Grand Mesa** (world's largest flat-top mountain, 300+ alpine lakes, summit 10,839 ft — *day altitude only, you're not sleeping here*) → down to **Cedaredge** → Hwy 65 to **Hwy 92** east → **Hotchkiss + Paonia** → **Hwy 133 north** over **McClure Pass** → **Redstone**.
+
+**Stops:**
+- **Grand Mesa pull-offs** for the lakes (Mesa Lakes, Island Lake).
+- **Lunch in Paonia** at **Living Farm Café** or **Revolution Brewing** — bohemian orchard town, fits the day's theme.
+- **Paonia Reservoir** for a leg-stretch before McClure.
+
+## Base 7 — Redstone / Marble (Fri Jun 5, 1 night)
 
 **Lodging target:** **Avalanche Ranch Cabins + Hot Springs** — book the cabin with private outdoor wood-fired tub. ~$300–500. **Books up early — chase this first.**
 *Backup:* **Redstone Inn** (historic, cheaper, ~$180).
 
-**Afternoon:**
-- **Redstone Boulevard** — walk the old coal-coking ovens, the Redstone Castle exterior, the tiny art galleries.
-- **Crystal Mill day trip option:** drive 30m up to Marble. Crystal Mill itself requires either 4WD on a sketchy road or a 4-mile-each-way hike — probably not with Jonah. But Marble town is worth the drive: marble quarry, **Slow Groovin' BBQ** for lunch.
+**Afternoon (arrive ~3:30pm after Grand Mesa drive):**
+- **Redstone Boulevard** — walk the old coal-coking ovens, Redstone Castle exterior, tiny art galleries.
+- **Marble option:** drive 30m up to Marble town — marble quarry, **Slow Groovin' BBQ** for lunch.
 - Hot tub at sunset. The whole point.
 
 **Dinner:** Grill at the cabin, or **Crystal Club Café** in Redstone (limited; check hours).
 
 ---
 
-## Drive 6 — Redstone → Carbondale (Sat Jun 6)
+## Drive 7 — Redstone → Carbondale (Sat Jun 6)
 
 Hwy 133 north, ~50m. Quick.
 
-## Base 7 — Carbondale (Sat–Sun Jun 6–7, 2 nights)
+## Base 8 — Carbondale (Sat–Sun Jun 6–7, 2 nights)
 
 **Lodging picks:**
 - Airbnb in town with a **Mt. Sopris view** — the entire reason we're here. **Top pick.**
@@ -234,7 +264,7 @@ Hwy 133 north, ~50m. Quick.
 
 ---
 
-## Drive 7 — Carbondale → DEN (Jun 8)
+## Drive 8 — Carbondale → DEN (Jun 8)
 
 Two options.
 
