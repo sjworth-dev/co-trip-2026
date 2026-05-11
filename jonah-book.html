@@ -338,10 +338,16 @@ body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
     <div class="loc"><span class="num">Our trip</span>Colorado</div>
     <div class="page-art">
       <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg">
-        <!-- Colorado state outline — sharp rectangle (CO has perfectly straight survey-line borders) -->
-        <rect x="50" y="30" width="300" height="170" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+        <!-- Colorado state outline — survey-line jogs preserved from the 1880s surveys -->
+        <path d="M 50 30
+                 L 200 30 L 200 28 L 280 28 L 280 31 L 350 31
+                 L 350 95 L 352 95 L 352 145 L 350 145 L 350 200
+                 L 200 200 L 200 202 L 50 202
+                 L 50 132 L 56 132 L 56 124 L 50 124
+                 L 50 30 Z"
+              fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linejoin="miter"/>
         <!-- COLORADO label inside top of box -->
-        <text x="200" y="48" text-anchor="middle"
+        <text x="200" y="50" text-anchor="middle"
               font-family="Inter, sans-serif" font-weight="700" font-size="10"
               letter-spacing="4" fill="#FFFFFF" opacity="0.45">COLORADO</text>
         <!-- Subtle mountain hints -->
