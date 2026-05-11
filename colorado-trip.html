@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <style>
 :root {
   /* Sandstone & San Juan rust palette — late-spring Colorado */
@@ -223,8 +222,30 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
 .view-panel.active { display: block; }
 
 /* MAP */
-.map-wrap { background: var(--bg-elev); padding: 1rem; border-radius: var(--radius-lg); box-shadow: var(--shadow); border: 1px solid var(--line); }
-#map { height: 540px; width: 100%; border-radius: var(--radius); background: var(--bg-soft); }
+.map-wrap { background: var(--bg-elev); padding: 1.5rem 1.75rem; border-radius: var(--radius-lg); box-shadow: var(--shadow); border: 1px solid var(--line); }
+.artsy-map { width: 100%; height: auto; display: block; }
+.artsy-map .frame      { stroke: var(--ink); fill: none; stroke-width: 1.5; }
+.artsy-map .neighbor   { fill: var(--ink-muted); opacity: 0.45; font-family: 'Fraunces', serif; font-style: italic; font-size: 12px; letter-spacing: 0.04em; }
+.artsy-map .mountain   { fill: var(--ink); opacity: 0.13; }
+.artsy-map .mountain-snow { fill: var(--bg-elev); }
+.artsy-map .divide     { stroke: var(--ink); opacity: 0.28; fill: none; stroke-dasharray: 1.5,3; stroke-width: 0.9; }
+.artsy-map .river      { stroke: var(--sky); fill: none; opacity: 0.6; stroke-width: 1.8; stroke-linecap: round; }
+.artsy-map .route      { stroke: var(--terracotta); fill: none; stroke-width: 2.5; stroke-dasharray: 8,4; stroke-linecap: round; stroke-linejoin: round; }
+.artsy-map .stop-bg    { fill: var(--terracotta); stroke: var(--bg-elev); stroke-width: 2.5; }
+.artsy-map .stop-num   { fill: var(--bg-elev); font-family: 'Fraunces', serif; font-weight: 600; font-size: 12px; }
+.artsy-map .label      { fill: var(--ink); font-family: 'Fraunces', serif; font-style: italic; font-size: 13px; }
+.artsy-map .den-marker { fill: var(--bg-elev); stroke: var(--ink); stroke-width: 1.5; }
+.artsy-map .den-star   { fill: var(--terracotta); }
+.artsy-map .compass    { stroke: var(--ink); fill: none; stroke-width: 0.9; opacity: 0.7; }
+.artsy-map .compass-n  { fill: var(--ink); opacity: 0.75; }
+.artsy-map .compass-faint { fill: var(--ink); opacity: 0.3; }
+.artsy-map .title      { fill: var(--ink); font-family: 'Fraunces', serif; font-style: italic; font-weight: 400; font-size: 28px; letter-spacing: -0.01em; }
+.artsy-map .subtitle   { fill: var(--ink-muted); font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 9px; letter-spacing: 0.25em; }
+.artsy-map .colorado-stamp { fill: var(--ink); opacity: 0.06; font-family: 'Fraunces', serif; font-weight: 600; font-size: 130px; letter-spacing: 0.05em; }
+.artsy-map .scale-line { stroke: var(--ink); stroke-width: 1; }
+.artsy-map .scale-text { fill: var(--ink-muted); font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 0.1em; }
+.artsy-map .legend     { font-family: 'Fraunces', serif; font-style: italic; font-size: 11px; fill: var(--ink); }
+.artsy-map .legend-dash { stroke: var(--terracotta); stroke-width: 2; stroke-dasharray: 4,2; fill: none; }
 
 /* CALENDAR */
 .calendar {
@@ -574,7 +595,135 @@ footer a { color: var(--ink-muted); }
 <!-- VIEWS -->
 <div class="view">
   <div class="view-panel active" data-panel="map">
-    <div class="map-wrap"><div id="map"></div></div>
+    <div class="map-wrap">
+      <svg class="artsy-map" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- COLORADO watermark behind everything -->
+        <text x="400" y="285" class="colorado-stamp" text-anchor="middle">COLORADO</text>
+
+        <!-- Title -->
+        <text x="400" y="58" class="title" text-anchor="middle">A Colorado Road Trip</text>
+        <text x="400" y="76" class="subtitle" text-anchor="middle">MAY 24 — JUNE 8, 2026</text>
+
+        <!-- Adjacent state labels (sit outside the box) -->
+        <text x="50"  y="250" class="neighbor" text-anchor="middle" transform="rotate(-90 50 250)">UTAH</text>
+        <text x="400" y="20"  class="neighbor" text-anchor="middle">WYOMING</text>
+        <text x="750" y="250" class="neighbor" text-anchor="middle" transform="rotate(90 750 250)">KANSAS</text>
+        <text x="250" y="490" class="neighbor" text-anchor="middle">NEW MEXICO</text>
+        <text x="550" y="490" class="neighbor" text-anchor="middle">OKLAHOMA</text>
+
+        <!-- Colorado outline (sharp corners) -->
+        <rect x="100" y="30" width="600" height="440" class="frame"/>
+
+        <!-- Scattered mountain peaks inside CO -->
+        <g class="mountain">
+          <polygon points="155,420 185,375 215,420"/>
+          <polygon points="200,440 230,400 260,440"/>
+          <polygon points="280,420 310,378 340,420"/>
+          <polygon points="350,360 395,295 440,360"/>
+          <polygon points="460,395 490,350 520,395"/>
+          <polygon points="220,330 252,288 284,330"/>
+          <polygon points="296,290 326,250 356,290"/>
+          <polygon points="540,420 570,378 600,420"/>
+          <polygon points="600,440 630,398 660,440"/>
+          <polygon points="158,320 188,278 218,320"/>
+          <polygon points="380,420 412,378 444,420"/>
+          <polygon points="490,440 520,400 550,440"/>
+        </g>
+        <!-- Snow caps on the biggest peaks -->
+        <g class="mountain-snow">
+          <polygon points="385,308 395,295 405,308 400,306 395,300 390,306"/>
+          <polygon points="316,262 326,250 336,262 332,260 326,254 320,260"/>
+        </g>
+
+        <!-- Continental Divide (dotted snake) -->
+        <path d="M 400 40 Q 380 130 365 220 Q 348 300 340 380 Q 348 430 360 465" class="divide"/>
+
+        <!-- Colorado River (heading west toward Palisade) -->
+        <path d="M 360 215 Q 290 222 230 232 Q 175 240 145 245 Q 120 247 105 248" class="river"/>
+        <!-- Arkansas River (heading east from near Salida) -->
+        <path d="M 355 305 Q 420 312 490 318 Q 560 320 620 325 Q 670 327 698 330" class="river"/>
+
+        <!-- Route line: DEN → 01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → DEN -->
+        <path d="M 471 155 L 456 274 L 358 302 L 270 440 L 196 439 L 207 344 L 156 238 L 251 230 L 253 206 L 471 155" class="route"/>
+
+        <!-- DEN marker (star inside circle) -->
+        <g transform="translate(471, 155)">
+          <circle r="13" class="den-marker"/>
+          <path class="den-star" d="M 0,-7 L 1.8,-2.3 L 7,-1.7 L 3,1.3 L 4.2,7 L 0,4.2 L -4.2,7 L -3,1.3 L -7,-1.7 L -1.8,-2.3 Z"/>
+        </g>
+        <text x="471" y="130" class="label" text-anchor="middle">DEN</text>
+
+        <!-- 8 numbered stops with labels -->
+        <g>
+          <circle cx="456" cy="274" r="11" class="stop-bg"/>
+          <text x="456" y="278" class="stop-num" text-anchor="middle">1</text>
+          <text x="472" y="277" class="label">Colorado Springs</text>
+        </g>
+        <g>
+          <circle cx="358" cy="302" r="11" class="stop-bg"/>
+          <text x="358" y="306" class="stop-num" text-anchor="middle">2</text>
+          <text x="374" y="305" class="label">Salida</text>
+        </g>
+        <g>
+          <circle cx="270" cy="440" r="11" class="stop-bg"/>
+          <text x="270" y="444" class="stop-num" text-anchor="middle">3</text>
+          <text x="286" y="443" class="label">Pagosa Springs</text>
+        </g>
+        <g>
+          <circle cx="196" cy="439" r="11" class="stop-bg"/>
+          <text x="196" y="443" class="stop-num" text-anchor="middle">4</text>
+          <text x="183" y="442" class="label" text-anchor="end">Durango</text>
+        </g>
+        <g>
+          <circle cx="207" cy="344" r="11" class="stop-bg"/>
+          <text x="207" y="348" class="stop-num" text-anchor="middle">5</text>
+          <text x="194" y="347" class="label" text-anchor="end">Ridgway · Ouray</text>
+        </g>
+        <g>
+          <circle cx="156" cy="238" r="11" class="stop-bg"/>
+          <text x="156" y="242" class="stop-num" text-anchor="middle">6</text>
+          <text x="143" y="241" class="label" text-anchor="end">Palisade</text>
+        </g>
+        <g>
+          <circle cx="251" cy="230" r="11" class="stop-bg"/>
+          <text x="251" y="234" class="stop-num" text-anchor="middle">7</text>
+          <text x="267" y="233" class="label">Redstone</text>
+        </g>
+        <g>
+          <circle cx="253" cy="206" r="11" class="stop-bg"/>
+          <text x="253" y="210" class="stop-num" text-anchor="middle">8</text>
+          <text x="269" y="209" class="label">Carbondale</text>
+        </g>
+
+        <!-- Compass rose (upper-right corner inside CO) -->
+        <g transform="translate(670, 95)">
+          <circle r="22" class="compass"/>
+          <circle r="14" class="compass"/>
+          <path d="M 0,-22 L 3.5,0 L 0,22 L -3.5,0 Z" class="compass-n"/>
+          <path d="M -22,0 L 0,-3 L 22,0 L 0,3 Z" class="compass-faint"/>
+          <text x="0" y="-27" class="subtitle" text-anchor="middle" style="font-size: 10px; letter-spacing: 0">N</text>
+        </g>
+
+        <!-- Scale bar (lower-left) -->
+        <g transform="translate(120, 458)">
+          <line x1="0" y1="0" x2="60" y2="0" class="scale-line"/>
+          <line x1="0" y1="-3" x2="0" y2="3" class="scale-line"/>
+          <line x1="30" y1="-2" x2="30" y2="2" class="scale-line"/>
+          <line x1="60" y1="-3" x2="60" y2="3" class="scale-line"/>
+          <text x="30" y="-7" class="scale-text" text-anchor="middle">~ 100 MI</text>
+        </g>
+
+        <!-- Legend (lower-right) -->
+        <g transform="translate(550, 456)">
+          <line x1="0" y1="0" x2="22" y2="0" class="legend-dash"/>
+          <text x="28" y="3" class="legend">Our route</text>
+          <circle cx="92" cy="0" r="6" class="stop-bg"/>
+          <text x="102" y="3" class="legend">Stop</text>
+        </g>
+
+      </svg>
+    </div>
   </div>
 
   <div class="view-panel" data-panel="calendar">
@@ -1222,7 +1371,6 @@ footer a { color: var(--ink-muted); }
   </div>
 </footer>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
 // ============== DATA ==============
 const TRIP_START = new Date('2026-05-24');
@@ -1352,36 +1500,7 @@ ANNOTS.forEach(a => {
 elev.innerHTML = elevHTML;
 
 // ============== MAP ==============
-const map = L.map('map', { scrollWheelZoom: false, zoomControl: true }).setView([38.5, -106.5], 7);
-const lightTiles = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-  attribution: 'Map data: &copy; OpenStreetMap, SRTM | Style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (CC-BY-SA)',
-  subdomains: 'abc', maxZoom: 17,
-});
-const darkTiles = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-  attribution: '&copy; OpenStreetMap &copy; CARTO',
-  subdomains: 'abcd', maxZoom: 19,
-});
-let activeTiles = lightTiles.addTo(map);
-
-L.polyline(ROUTE_POINTS, { color: '#B0411F', weight: 3, opacity: 0.85, dashArray: '6,6' }).addTo(map);
-
-// DEN endpoints
-[ROUTE_POINTS[0]].forEach(c => {
-  L.circleMarker(c, { radius: 7, color: '#1F1A14', weight: 2, fillColor: '#FAF6EE', fillOpacity: 1 })
-    .addTo(map).bindPopup('<strong>DEN Airport</strong>');
-});
-
-BASES.forEach(b => {
-  const icon = L.divIcon({
-    className: '',
-    html: `<div class="marker-base">${b.num.replace(/^0/, '')}</div>`,
-    iconSize: [32, 32], iconAnchor: [16, 16],
-  });
-  L.marker(b.coords, { icon }).addTo(map)
-    .bindPopup(`<strong>${b.name}</strong><br>${b.dates}`);
-});
-
-map.fitBounds(L.latLngBounds(ROUTE_POINTS).pad(0.05));
+// The map view is a static SVG illustration — no JS init needed.
 
 // ============== TABS ==============
 document.querySelectorAll('.tab').forEach(tab => {
@@ -1390,7 +1509,6 @@ document.querySelectorAll('.tab').forEach(tab => {
     document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
     tab.classList.add('active');
     document.querySelector(`.view-panel[data-panel="${tab.dataset.view}"]`).classList.add('active');
-    if (tab.dataset.view === 'map') setTimeout(() => map.invalidateSize(), 50);
   });
 });
 
@@ -1453,23 +1571,12 @@ const themeKey = 'co-trip-theme';
 const stored = localStorage.getItem(themeKey);
 if (stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
   document.documentElement.dataset.theme = 'dark';
-  swapTiles(true);
-}
-
-function swapTiles(isDark) {
-  if (!map) return;
-  if (isDark) {
-    if (activeTiles !== darkTiles) { map.removeLayer(activeTiles); darkTiles.addTo(map); activeTiles = darkTiles; }
-  } else {
-    if (activeTiles !== lightTiles) { map.removeLayer(activeTiles); lightTiles.addTo(map); activeTiles = lightTiles; }
-  }
 }
 
 function toggleTheme() {
   const isDark = document.documentElement.dataset.theme === 'dark';
   document.documentElement.dataset.theme = isDark ? 'light' : 'dark';
   localStorage.setItem(themeKey, isDark ? 'light' : 'dark');
-  swapTiles(!isDark);
   document.getElementById('themeToggle').textContent = isDark ? '☾' : '☀';
 }
 document.getElementById('themeToggle').textContent = document.documentElement.dataset.theme === 'dark' ? '☀' : '☾';
